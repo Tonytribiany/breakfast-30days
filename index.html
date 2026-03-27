@@ -5,795 +5,273 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="小橙子早餐">
+<meta name="apple-mobile-web-app-title" content="橙子家">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍊</text></svg>">
-<title>小橙子的爱心早餐</title>
+<title>小橙子的家 · 爱心健康生活</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --pink: #FF8FAB;
-  --pink-light: #FFF0F3;
-  --pink-deep: #E85D8A;
-  --yellow: #FFD166;
-  --yellow-light: #FFF8E1;
-  --yellow-deep: #F0A030;
-  --green: #7EC8A0;
-  --green-light: #E8F8EE;
-  --green-deep: #4AA06A;
-  --blue: #7EB8E0;
-  --blue-light: #E4F2FC;
-  --blue-deep: #4A90C4;
-  --purple: #B8A0D8;
-  --purple-light: #F0EAF8;
-  --orange: #FFA570;
-  --orange-light: #FFF2E8;
-  --orange-deep: #E07830;
-  --cream: #FFFBF5;
-  --warm-bg: #FFF9F2;
-  --text-dark: #3D2C2C;
-  --text-mid: #6B5858;
-  --text-light: #A08888;
-  --card-radius: 24px;
-  --shadow-soft: 0 4px 20px rgba(200,150,150,0.1);
-  --shadow-card: 0 2px 16px rgba(200,150,150,0.12), 0 1px 4px rgba(200,150,150,0.06);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Noto Sans SC', -apple-system, sans-serif;
-  background: var(--warm-bg);
-  color: var(--text-dark);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  padding-bottom: env(safe-area-inset-bottom, 0);
-}
-
-/* ============ HERO ============ */
-.hero {
-  position: relative;
-  padding: 50px 20px 30px;
-  text-align: center;
-  overflow: hidden;
-  background: linear-gradient(170deg, #FFF3D6 0%, #FFF0F3 30%, #E8F8EE 60%, #FFF9F2 100%);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50px; right: -30px;
-  width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(255,165,112,0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 4s ease-in-out infinite;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -20px; left: -20px;
-  width: 140px; height: 140px;
-  background: radial-gradient(circle, rgba(126,200,160,0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 4s ease-in-out infinite 2s;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.1); opacity: 1; }
-}
-
-.hero-mascot {
-  font-size: 64px;
-  display: inline-block;
-  animation: bounce 2s ease-in-out infinite;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.hero-title {
-  font-size: 22px;
-  font-weight: 900;
-  margin: 12px 0 4px;
-  line-height: 1.4;
-}
-
-.hero-title .name-hl {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--orange), var(--pink-deep));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-subtitle {
-  font-size: 13px;
-  color: var(--text-light);
-  font-weight: 400;
-}
-
-.hero-family {
-  margin-top: 12px;
-  font-size: 12px;
-  color: var(--text-mid);
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-.hero-family span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.hero-badges {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 14px;
-  flex-wrap: wrap;
-}
-
-.hero-badge {
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.hero-badge.b1 { background: var(--orange-light); color: var(--orange-deep); }
-.hero-badge.b2 { background: var(--green-light); color: var(--green-deep); }
-.hero-badge.b3 { background: var(--yellow-light); color: var(--yellow-deep); }
-.hero-badge.b4 { background: var(--pink-light); color: var(--pink-deep); }
-
-/* ============ STATS BAR ============ */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  padding: 14px 16px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.stat-item {
-  text-align: center;
-  flex: 1;
-  padding: 12px 6px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
-}
-
-.stat-num {
-  font-size: 22px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--orange), var(--pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.stat-label {
-  font-size: 10px;
-  color: var(--text-light);
-  margin-top: 2px;
-}
-
-/* ============ TABS ============ */
-.tabs-wrapper {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,249,242,0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(200,150,150,0.08);
-}
-
-.tabs-scroll {
-  display: flex;
-  overflow-x: auto;
-  padding: 10px 12px;
-  gap: 6px;
-  scrollbar-width: none;
-}
-
-.tabs-scroll::-webkit-scrollbar { display: none; }
-
-.tab-btn {
-  flex-shrink: 0;
-  padding: 8px 16px;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: white;
-  color: var(--text-light);
-  white-space: nowrap;
-}
-
-.tab-btn.active {
-  background: linear-gradient(135deg, var(--orange), var(--orange-deep));
-  color: white;
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(255,165,112,0.35);
-  transform: scale(1.03);
-}
-
-.tab-btn:not(.active):hover {
-  border-color: var(--orange-light);
-  color: var(--text-mid);
-}
-
-.tab-special {
-  background: linear-gradient(135deg, var(--pink-light), #FFE4F0);
-  color: var(--pink-deep);
-}
-
-.tab-special.active {
-  background: linear-gradient(135deg, var(--pink), var(--pink-deep));
-  color: white;
-  box-shadow: 0 4px 14px rgba(232,93,138,0.3);
-}
-
-/* ============ CONTENT ============ */
-.content {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 8px 14px 30px;
-}
-
-.week-panel { display: none; }
-.week-panel.active { display: block; animation: fadeUp 0.4s ease; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ============ BREAKFAST CARD ============ */
-.bk-card {
-  background: white;
-  border-radius: var(--card-radius);
-  margin-bottom: 18px;
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.bk-card:active { transform: scale(0.98); }
-
-.bk-card.is-today {
-  border: 2.5px solid var(--orange);
-  box-shadow: 0 4px 24px rgba(255,165,112,0.25);
-}
-
-.bk-card.is-today .card-top::after {
-  content: '🍊 今天吃这个！';
-  position: absolute;
-  top: 12px; right: 12px;
-  background: linear-gradient(135deg, var(--orange), var(--orange-deep));
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 12px;
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.card-top {
-  position: relative;
-  padding: 18px 18px 14px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.day-circle {
-  width: 52px; height: 52px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-weight: 900;
-}
-
-.day-circle .dn { font-size: 22px; line-height: 1; }
-.day-circle .dl { font-size: 8px; letter-spacing: 1px; opacity: 0.7; margin-top: 2px; }
-
-.c1 { background: var(--orange-light); color: var(--orange-deep); }
-.c2 { background: var(--pink-light); color: var(--pink-deep); }
-.c3 { background: var(--green-light); color: var(--green-deep); }
-.c4 { background: var(--blue-light); color: var(--blue-deep); }
-.c5 { background: var(--yellow-light); color: var(--yellow-deep); }
-.c6 { background: var(--purple-light); color: #7A60A8; }
-.c7 { background: #F0E4D8; color: #8A6A50; }
-
-.card-title-area { flex: 1; min-width: 0; }
-
-.card-date { font-size: 11px; color: var(--text-light); margin-bottom: 2px; }
-
-.card-name {
-  font-size: 18px;
-  font-weight: 900;
-  color: var(--text-dark);
-  line-height: 1.3;
-}
-
-.card-name .ce { font-size: 20px; margin-right: 4px; }
-
-.card-cal {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  margin-top: 4px;
-  padding: 2px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  font-weight: 600;
-  background: var(--orange-light);
-  color: var(--orange-deep);
-}
-
-/* Food Grid */
-.food-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  margin: 0 14px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(200,150,150,0.05);
-}
-
-.food-cell {
-  padding: 12px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.food-cell:nth-child(1) { background: rgba(255,165,112,0.05); }
-.food-cell:nth-child(2) { background: rgba(255,143,171,0.05); }
-.food-cell:nth-child(3) { background: rgba(126,200,160,0.05); }
-.food-cell:nth-child(4) { background: rgba(126,184,224,0.05); }
-
-.fc-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-.fc-info { min-width: 0; }
-
-.fc-label {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.food-cell:nth-child(1) .fc-label { color: var(--orange); }
-.food-cell:nth-child(2) .fc-label { color: var(--pink); }
-.food-cell:nth-child(3) .fc-label { color: var(--green); }
-.food-cell:nth-child(4) .fc-label { color: var(--blue); }
-
-.fc-name { font-size: 13px; font-weight: 600; color: var(--text-dark); line-height: 1.4; }
-.fc-detail { font-size: 11px; color: var(--text-light); margin-top: 1px; line-height: 1.3; }
-
-/* Nutrition Bar */
-.nutri-bar {
-  display: flex;
-  margin: 12px 14px 0;
-  height: 6px;
-  border-radius: 3px;
-  overflow: hidden;
-  background: rgba(0,0,0,0.03);
-}
-
-.nutri-seg { height: 100%; transition: width 0.6s ease; }
-.nutri-seg.carb { background: var(--yellow); }
-.nutri-seg.prot { background: var(--pink); }
-.nutri-seg.fat { background: var(--green); }
-.nutri-seg.fiber { background: var(--blue); }
-
-.nutri-labels {
-  display: flex;
-  justify-content: space-between;
-  margin: 4px 14px 0;
-  font-size: 9px;
-  color: var(--text-light);
-}
-
-.nutri-labels span { display: flex; align-items: center; gap: 3px; }
-
-.nutri-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-.nutri-dot.carb { background: var(--yellow); }
-.nutri-dot.prot { background: var(--pink); }
-.nutri-dot.fat { background: var(--green); }
-.nutri-dot.fiber { background: var(--blue); }
-
-/* Recipe Toggle */
-.recipe-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin: 12px 14px 0;
-  padding: 10px;
-  border: none;
-  border-radius: 12px;
-  background: var(--cream);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-mid);
-  cursor: pointer;
-  width: calc(100% - 28px);
-  transition: all 0.2s ease;
-}
-
-.recipe-toggle:hover { background: var(--orange-light); color: var(--orange-deep); }
-
-.recipe-toggle .arrow {
-  transition: transform 0.3s ease;
-  font-size: 10px;
-}
-
-.recipe-toggle.open .arrow { transform: rotate(180deg); }
-
-.recipe-content {
-  display: none;
-  margin: 8px 14px 0;
-  padding: 14px;
-  background: var(--cream);
-  border-radius: 14px;
-  border-left: 3px solid var(--orange-light);
-}
-
-.recipe-content.open { display: block; animation: fadeUp 0.3s ease; }
-
-.recipe-step {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 8px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text-mid);
-}
-
-.recipe-step:last-child { margin-bottom: 0; }
-
-.step-num {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: var(--orange-light);
-  color: var(--orange-deep);
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.recipe-ingredients {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed rgba(200,150,150,0.15);
-}
-
-.recipe-ingredients .ri-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--orange);
-  margin-bottom: 6px;
-}
-
-.ingredient-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-
-.ing-tag {
-  padding: 3px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  background: white;
-  color: var(--text-mid);
-  border: 1px solid rgba(200,150,150,0.1);
-}
-
-/* Rating Section */
-.rating-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
-  margin-top: 12px;
-  border-top: 1px solid rgba(200,150,150,0.06);
-}
-
-.rating-left { display: flex; align-items: center; gap: 8px; }
-
-.check-btn {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  border: 2.5px solid #DDD;
-  background: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  transition: all 0.3s ease;
-}
-
-.check-btn.checked {
-  border-color: var(--green);
-  background: var(--green-light);
-  animation: pop 0.3s ease;
-}
-
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-.check-btn.checked::after { content: '✓'; color: var(--green-deep); font-weight: 900; }
-
-.check-label { font-size: 12px; color: var(--text-light); }
-.check-btn.checked + .check-label { color: var(--green-deep); font-weight: 500; }
-
-.rating-btns { display: flex; gap: 6px; }
-
-.rate-btn {
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  border: none;
-  background: #F5F0ED;
-  cursor: pointer;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  filter: grayscale(0.8);
-  opacity: 0.5;
-}
-
-.rate-btn:active { transform: scale(1.25); }
-
-.rate-btn.selected {
-  filter: grayscale(0);
-  opacity: 1;
-  transform: scale(1.12);
-  animation: pop 0.3s ease;
-}
-
-.rate-btn.like.selected { background: var(--orange-light); box-shadow: 0 2px 12px rgba(255,165,112,0.35); }
-.rate-btn.ok.selected { background: var(--yellow-light); box-shadow: 0 2px 12px rgba(255,209,102,0.35); }
-.rate-btn.dislike.selected { background: var(--blue-light); box-shadow: 0 2px 12px rgba(126,184,224,0.3); }
-
-/* ============ RECOMMEND PANEL ============ */
-.reco-header { text-align: center; padding: 30px 20px 16px; }
-.reco-header h2 { font-size: 20px; font-weight: 900; }
-.reco-header p { font-size: 13px; color: var(--text-light); margin-top: 4px; }
-
-.reco-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  margin: 0 0 20px;
-}
-
-.reco-stat {
-  text-align: center;
-  padding: 16px 8px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: var(--shadow-soft);
-}
-
-.reco-stat .rs-icon { font-size: 28px; margin-bottom: 4px; }
-.reco-stat .rs-num { font-size: 24px; font-weight: 900; }
-.reco-stat .rs-label { font-size: 10px; color: var(--text-light); margin-top: 2px; }
-
-.reco-stat:nth-child(1) .rs-num { color: var(--orange-deep); }
-.reco-stat:nth-child(2) .rs-num { color: var(--yellow-deep); }
-.reco-stat:nth-child(3) .rs-num { color: var(--blue-deep); }
-
-.reco-section-title {
-  font-size: 15px;
-  font-weight: 700;
-  margin: 20px 0 10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.reco-card {
-  background: white;
-  border-radius: 16px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
-  box-shadow: var(--shadow-soft);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.reco-card .rc-emoji { font-size: 32px; }
-.reco-card .rc-info { flex: 1; }
-.reco-card .rc-name { font-size: 14px; font-weight: 700; }
-.reco-card .rc-desc { font-size: 11px; color: var(--text-light); margin-top: 2px; }
-
-.reco-card .rc-tag {
-  padding: 3px 10px;
-  border-radius: 10px;
-  font-size: 10px;
-  font-weight: 600;
-  flex-shrink: 0;
-  background: var(--orange-light);
-  color: var(--orange-deep);
-}
-
-.no-data-msg {
-  text-align: center;
-  padding: 40px 20px;
-  color: var(--text-light);
-  font-size: 14px;
-}
-
-.no-data-msg .nd-emoji { font-size: 56px; margin-bottom: 12px; }
-
-/* Pyramid */
-.pyramid-wrap {
-  margin: 20px 0;
-  padding: 20px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: var(--shadow-soft);
-}
-
-.pyramid-title { text-align: center; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
-
-.pyramid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-
-.pyramid-level {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  text-align: center;
-}
-
-.pyramid-level .pl-icon { font-size: 18px; margin-right: 6px; }
-
-.py-l1 { width: 40%; background: var(--pink-light); color: var(--pink-deep); }
-.py-l2 { width: 55%; background: var(--purple-light); color: #7A60A8; }
-.py-l3 { width: 70%; background: var(--orange-light); color: var(--orange-deep); }
-.py-l4 { width: 85%; background: var(--green-light); color: var(--green-deep); }
-.py-l5 { width: 100%; background: var(--yellow-light); color: var(--yellow-deep); }
-
-/* ============ TIPS ============ */
-.tips-section {
-  max-width: 600px;
-  margin: 10px auto 0;
-  padding: 0 14px 20px;
-}
-
-.tips-title { text-align: center; font-size: 18px; font-weight: 900; margin-bottom: 14px; }
-
-.tip-card {
-  display: flex;
-  gap: 12px;
-  padding: 14px 16px;
-  background: white;
-  border-radius: 16px;
-  margin-bottom: 8px;
-  box-shadow: var(--shadow-soft);
-  align-items: flex-start;
-}
-
-.tip-icon {
-  font-size: 24px;
-  width: 40px; height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  flex-shrink: 0;
-}
-
-.tip-card:nth-child(odd) .tip-icon { background: var(--orange-light); }
-.tip-card:nth-child(even) .tip-icon { background: var(--green-light); }
-
-.tip-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
-.tip-text p { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
-
-/* ============ FOOTER ============ */
-.footer {
-  text-align: center;
-  padding: 24px 20px;
-  font-size: 13px;
-  color: var(--text-light);
-  line-height: 1.8;
-}
-
-.footer .heart { color: var(--orange); animation: heartbeat 1.5s ease-in-out infinite; display: inline-block; }
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-/* ============ ANIMATIONS ============ */
-.bk-card { opacity: 0; transform: translateY(20px); }
-.bk-card.vis { animation: cardIn 0.45s ease forwards; }
-
-@keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
-
-@media (max-width: 360px) {
-  .hero-title { font-size: 19px; }
-  .card-name { font-size: 16px; }
-  .food-grid { grid-template-columns: 1fr; }
-}
-
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
-}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#FF8FAB;--pink-light:#FFF0F3;--pink-deep:#E85D8A;
+  --yellow:#FFD166;--yellow-light:#FFF8E1;--yellow-deep:#F0A030;
+  --green:#7EC8A0;--green-light:#E8F8EE;--green-deep:#4AA06A;
+  --blue:#7EB8E0;--blue-light:#E4F2FC;--blue-deep:#4A90C4;
+  --purple:#B8A0D8;--purple-light:#F0EAF8;
+  --orange:#FFA570;--orange-light:#FFF2E8;--orange-deep:#E07830;
+  --cream:#FFFBF5;--warm-bg:#FFF9F2;
+  --text-dark:#3D2C2C;--text-mid:#6B5858;--text-light:#A08888;
+  --card-radius:24px;
+  --shadow-soft:0 4px 20px rgba(200,150,150,0.1);
+  --shadow-card:0 2px 16px rgba(200,150,150,0.12),0 1px 4px rgba(200,150,150,0.06);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--warm-bg);color:var(--text-dark);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:70px}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(200,150,150,0.1);display:flex;padding:6px 0;padding-bottom:calc(6px + env(safe-area-inset-bottom,0))}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border:none;background:none;font-family:inherit;font-size:10px;color:var(--text-light);cursor:pointer;transition:all .2s}
+.nav-item.active{color:var(--orange-deep)}
+.nav-item .nav-icon{font-size:24px;transition:transform .2s}
+.nav-item.active .nav-icon{transform:scale(1.15)}
+.nav-label{font-weight:500}
+
+/* ===== PAGE CONTAINERS ===== */
+.page{display:none}
+.page.active{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.1);opacity:1}}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+
+/* ===== HERO (shared) ===== */
+.hero{position:relative;padding:50px 20px 30px;text-align:center;overflow:hidden;background:linear-gradient(170deg,#FFF3D6 0%,#FFF0F3 30%,#E8F8EE 60%,#FFF9F2 100%)}
+.hero::before{content:'';position:absolute;top:-50px;right:-30px;width:180px;height:180px;background:radial-gradient(circle,rgba(255,165,112,.2) 0%,transparent 70%);border-radius:50%;animation:pulse 4s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-20px;left:-20px;width:140px;height:140px;background:radial-gradient(circle,rgba(126,200,160,.2) 0%,transparent 70%);border-radius:50%;animation:pulse 4s ease-in-out infinite 2s}
+.hero-mascot{font-size:56px;display:inline-block;animation:bounce 2s ease-in-out infinite;filter:drop-shadow(0 4px 12px rgba(0,0,0,.1))}
+.hero-title{font-size:22px;font-weight:900;margin:10px 0 4px;line-height:1.4}
+.hero-title .hl{display:inline-block;background:linear-gradient(135deg,var(--orange),var(--pink-deep));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:13px;color:var(--text-light)}
+.hero-family{margin-top:10px;font-size:12px;color:var(--text-mid);display:flex;justify-content:center;gap:14px}
+.hero-family span{display:flex;align-items:center;gap:4px}
+.hero-badges{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+.badge{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:500}
+.b1{background:var(--orange-light);color:var(--orange-deep)}.b2{background:var(--green-light);color:var(--green-deep)}.b3{background:var(--yellow-light);color:var(--yellow-deep)}.b4{background:var(--pink-light);color:var(--pink-deep)}
+
+/* ===== STATS BAR ===== */
+.stats-bar{display:flex;gap:12px;padding:14px 16px;max-width:600px;margin:0 auto}
+.stat-item{text-align:center;flex:1;padding:12px 6px;background:#fff;border-radius:16px;box-shadow:var(--shadow-soft)}
+.stat-num{font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:10px;color:var(--text-light);margin-top:2px}
+
+/* ===== TABS ===== */
+.tabs-wrapper{position:sticky;top:0;z-index:100;background:rgba(255,249,242,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,150,150,.08)}
+.tabs-scroll{display:flex;overflow-x:auto;padding:10px 12px;gap:6px;scrollbar-width:none}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:8px 16px;border:2px solid transparent;border-radius:20px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .3s;background:#fff;color:var(--text-light);white-space:nowrap}
+.tab-btn.active{background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(255,165,112,.35);transform:scale(1.03)}
+.tab-special{background:linear-gradient(135deg,var(--pink-light),#FFE4F0);color:var(--pink-deep)}
+.tab-special.active{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;box-shadow:0 4px 14px rgba(232,93,138,.3)}
+
+/* ===== CONTENT ===== */
+.content{max-width:600px;margin:0 auto;padding:8px 14px 30px}
+
+/* ===== BREAKFAST CARD ===== */
+.bk-card{background:#fff;border-radius:var(--card-radius);margin-bottom:18px;box-shadow:var(--shadow-card);overflow:hidden;transition:transform .3s;opacity:0;transform:translateY(20px)}
+.bk-card.vis{animation:cardIn .45s ease forwards}
+.bk-card:active{transform:scale(.98)}
+.bk-card.is-today{border:2.5px solid var(--orange);box-shadow:0 4px 24px rgba(255,165,112,.25)}
+.bk-card.is-today .card-top::after{content:'🍊 今天吃这个！';position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--orange),var(--orange-deep));color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:12px}
+.card-top{position:relative;padding:18px 18px 14px;display:flex;align-items:center;gap:14px}
+.day-circle{width:52px;height:52px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.day-circle .dn{font-size:22px;line-height:1}.day-circle .dl{font-size:8px;letter-spacing:1px;opacity:.7;margin-top:2px}
+.c1{background:var(--orange-light);color:var(--orange-deep)}.c2{background:var(--pink-light);color:var(--pink-deep)}.c3{background:var(--green-light);color:var(--green-deep)}.c4{background:var(--blue-light);color:var(--blue-deep)}.c5{background:var(--yellow-light);color:var(--yellow-deep)}.c6{background:var(--purple-light);color:#7A60A8}.c7{background:#F0E4D8;color:#8A6A50}
+.card-title-area{flex:1;min-width:0}
+.card-date{font-size:11px;color:var(--text-light);margin-bottom:2px}
+.card-name{font-size:18px;font-weight:900;line-height:1.3}
+.card-name .ce{font-size:20px;margin-right:4px}
+.card-cal{display:inline-flex;align-items:center;gap:3px;margin-top:4px;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;background:var(--orange-light);color:var(--orange-deep)}
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:0 14px;border-radius:16px;overflow:hidden;background:rgba(200,150,150,.05)}
+.food-cell{padding:12px 14px;display:flex;align-items:flex-start;gap:8px}
+.food-cell:nth-child(1){background:rgba(255,165,112,.05)}.food-cell:nth-child(2){background:rgba(255,143,171,.05)}.food-cell:nth-child(3){background:rgba(126,200,160,.05)}.food-cell:nth-child(4){background:rgba(126,184,224,.05)}
+.fc-icon{font-size:20px;flex-shrink:0;margin-top:1px}.fc-info{min-width:0}
+.fc-label{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:2px}
+.food-cell:nth-child(1) .fc-label{color:var(--orange)}.food-cell:nth-child(2) .fc-label{color:var(--pink)}.food-cell:nth-child(3) .fc-label{color:var(--green)}.food-cell:nth-child(4) .fc-label{color:var(--blue)}
+.fc-name{font-size:13px;font-weight:600;line-height:1.4}.fc-detail{font-size:11px;color:var(--text-light);margin-top:1px;line-height:1.3}
+.nutri-bar{display:flex;margin:12px 14px 0;height:6px;border-radius:3px;overflow:hidden;background:rgba(0,0,0,.03)}
+.nutri-seg{height:100%}.nutri-seg.carb{background:var(--yellow)}.nutri-seg.prot{background:var(--pink)}.nutri-seg.fat{background:var(--green)}.nutri-seg.fiber{background:var(--blue)}
+.nutri-labels{display:flex;justify-content:space-between;margin:4px 14px 0;font-size:9px;color:var(--text-light)}
+.nutri-labels span{display:flex;align-items:center;gap:3px}
+.nutri-dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.nutri-dot.carb{background:var(--yellow)}.nutri-dot.prot{background:var(--pink)}.nutri-dot.fat{background:var(--green)}.nutri-dot.fiber{background:var(--blue)}
+.recipe-toggle{display:flex;align-items:center;justify-content:center;gap:6px;margin:12px 14px 0;padding:10px;border:none;border-radius:12px;background:var(--cream);font-family:inherit;font-size:13px;font-weight:500;color:var(--text-mid);cursor:pointer;width:calc(100% - 28px);transition:all .2s}
+.recipe-toggle:hover{background:var(--orange-light);color:var(--orange-deep)}
+.recipe-toggle .arrow{transition:transform .3s;font-size:10px}
+.recipe-toggle.open .arrow{transform:rotate(180deg)}
+.recipe-content{display:none;margin:8px 14px 0;padding:14px;background:var(--cream);border-radius:14px;border-left:3px solid var(--orange-light)}
+.recipe-content.open{display:block;animation:fadeUp .3s ease}
+.recipe-step{display:flex;gap:10px;margin-bottom:8px;font-size:13px;line-height:1.6;color:var(--text-mid)}
+.recipe-step:last-child{margin-bottom:0}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--orange-light);color:var(--orange-deep);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.recipe-ingredients{margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed rgba(200,150,150,.15)}
+.recipe-ingredients .ri-title{font-size:11px;font-weight:700;color:var(--orange);margin-bottom:6px}
+.ingredient-tags{display:flex;flex-wrap:wrap;gap:4px}
+.ing-tag{padding:3px 8px;border-radius:8px;font-size:11px;background:#fff;color:var(--text-mid);border:1px solid rgba(200,150,150,.1)}
+.rating-section{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;margin-top:12px;border-top:1px solid rgba(200,150,150,.06)}
+.rating-left{display:flex;align-items:center;gap:8px}
+.check-btn{width:38px;height:38px;border-radius:50%;border:2.5px solid #DDD;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .3s}
+.check-btn.checked{border-color:var(--green);background:var(--green-light);animation:pop .3s}
+.check-btn.checked::after{content:'✓';color:var(--green-deep);font-weight:900}
+.check-label{font-size:12px;color:var(--text-light)}
+.check-btn.checked+.check-label{color:var(--green-deep);font-weight:500}
+.rating-btns{display:flex;gap:6px}
+.rate-btn{width:42px;height:42px;border-radius:50%;border:none;background:#F5F0ED;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;transition:all .3s;filter:grayscale(.8);opacity:.5}
+.rate-btn:active{transform:scale(1.25)}
+.rate-btn.selected{filter:grayscale(0);opacity:1;transform:scale(1.12);animation:pop .3s}
+.rate-btn.like.selected{background:var(--orange-light);box-shadow:0 2px 12px rgba(255,165,112,.35)}
+.rate-btn.ok.selected{background:var(--yellow-light);box-shadow:0 2px 12px rgba(255,209,102,.35)}
+.rate-btn.dislike.selected{background:var(--blue-light);box-shadow:0 2px 12px rgba(126,184,224,.3)}
+
+/* ===== TIPS ===== */
+.tips-section{max-width:600px;margin:10px auto 0;padding:0 14px 20px}
+.tips-title{text-align:center;font-size:18px;font-weight:900;margin-bottom:14px}
+.tip-card{display:flex;gap:12px;padding:14px 16px;background:#fff;border-radius:16px;margin-bottom:8px;box-shadow:var(--shadow-soft);align-items:flex-start}
+.tip-icon{font-size:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px;flex-shrink:0}
+.tip-card:nth-child(odd) .tip-icon{background:var(--orange-light)}.tip-card:nth-child(even) .tip-icon{background:var(--green-light)}
+.tip-text strong{display:block;font-size:14px;margin-bottom:2px}
+.tip-text p{font-size:12px;color:var(--text-mid);line-height:1.6}
+
+/* ===== RECOMMEND ===== */
+.reco-header{text-align:center;padding:30px 20px 16px}
+.reco-header h2{font-size:20px;font-weight:900}
+.reco-header p{font-size:13px;color:var(--text-light);margin-top:4px}
+.reco-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:0 0 20px}
+.reco-stat{text-align:center;padding:16px 8px;background:#fff;border-radius:16px;box-shadow:var(--shadow-soft)}
+.reco-stat .rs-icon{font-size:28px;margin-bottom:4px}.reco-stat .rs-num{font-size:24px;font-weight:900}.reco-stat .rs-label{font-size:10px;color:var(--text-light);margin-top:2px}
+.reco-stat:nth-child(1) .rs-num{color:var(--orange-deep)}.reco-stat:nth-child(2) .rs-num{color:var(--yellow-deep)}.reco-stat:nth-child(3) .rs-num{color:var(--blue-deep)}
+.reco-section-title{font-size:15px;font-weight:700;margin:20px 0 10px;display:flex;align-items:center;gap:6px}
+.reco-card{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-soft);display:flex;align-items:center;gap:12px}
+.reco-card .rc-emoji{font-size:32px}.reco-card .rc-info{flex:1}.reco-card .rc-name{font-size:14px;font-weight:700}.reco-card .rc-desc{font-size:11px;color:var(--text-light);margin-top:2px}
+.reco-card .rc-tag{padding:3px 10px;border-radius:10px;font-size:10px;font-weight:600;flex-shrink:0;background:var(--orange-light);color:var(--orange-deep)}
+.no-data-msg{text-align:center;padding:40px 20px;color:var(--text-light);font-size:14px}
+.no-data-msg .nd-emoji{font-size:56px;margin-bottom:12px}
+.pyramid-wrap{margin:20px 0;padding:20px;background:#fff;border-radius:20px;box-shadow:var(--shadow-soft)}
+.pyramid-title{text-align:center;font-size:15px;font-weight:700;margin-bottom:16px}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px}
+.pyramid-level{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:10px;font-size:12px;font-weight:600;text-align:center}
+.pyramid-level .pl-icon{font-size:18px;margin-right:6px}
+.py-l1{width:40%;background:var(--pink-light);color:var(--pink-deep)}.py-l2{width:55%;background:var(--purple-light);color:#7A60A8}.py-l3{width:70%;background:var(--orange-light);color:var(--orange-deep)}.py-l4{width:85%;background:var(--green-light);color:var(--green-deep)}.py-l5{width:100%;background:var(--yellow-light);color:var(--yellow-deep)}
+
+/* ===== FOOTER ===== */
+.footer{text-align:center;padding:24px 20px;font-size:13px;color:var(--text-light);line-height:1.8}
+.footer .heart{color:var(--orange);animation:heartbeat 1.5s ease-in-out infinite;display:inline-block}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+/* ========================================= */
+/* ===== DAILY LIFE PAGE ===== */
+/* ========================================= */
+.life-hero{position:relative;padding:50px 20px 24px;text-align:center;overflow:hidden;background:linear-gradient(170deg,#E4F2FC 0%,#F0EAF8 30%,#FFF8E1 60%,#FFF9F2 100%)}
+.life-hero::before{content:'';position:absolute;top:-40px;left:-30px;width:160px;height:160px;background:radial-gradient(circle,rgba(126,184,224,.2) 0%,transparent 70%);border-radius:50%;animation:pulse 4s ease-in-out infinite}
+.life-hero .hero-mascot{font-size:48px}
+
+/* Family Selector */
+.family-selector{display:flex;justify-content:center;gap:10px;padding:16px;max-width:600px;margin:0 auto;flex-wrap:wrap}
+.family-avatar{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:all .3s;padding:8px 12px;border-radius:16px;border:2.5px solid transparent;background:#fff;box-shadow:var(--shadow-soft);min-width:72px}
+.family-avatar:active{transform:scale(.95)}
+.family-avatar.active{border-color:var(--blue);box-shadow:0 4px 16px rgba(126,184,224,.3);background:var(--blue-light)}
+.family-avatar .fa-emoji{font-size:32px}
+.family-avatar .fa-name{font-size:11px;font-weight:600;color:var(--text-mid)}
+.family-avatar.active .fa-name{color:var(--blue-deep)}
+.family-avatar .fa-role{font-size:9px;color:var(--text-light)}
+
+/* Day Type Banner */
+.day-banner{max-width:600px;margin:0 auto;padding:0 14px}
+.day-banner-inner{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:16px;box-shadow:var(--shadow-soft)}
+.day-banner-inner.workday{background:linear-gradient(135deg,var(--blue-light),#E4F0FC)}
+.day-banner-inner.restday{background:linear-gradient(135deg,var(--green-light),#D8F4E4)}
+.day-banner-inner.holiday{background:linear-gradient(135deg,var(--pink-light),#FFE8F0)}
+.db-icon{font-size:36px}
+.db-info{flex:1}
+.db-date{font-size:13px;font-weight:700;color:var(--text-dark)}
+.db-type{font-size:12px;color:var(--text-mid);margin-top:2px}
+.db-tag{padding:4px 10px;border-radius:10px;font-size:11px;font-weight:600;flex-shrink:0}
+.workday .db-tag{background:rgba(126,184,224,.2);color:var(--blue-deep)}
+.restday .db-tag{background:rgba(126,200,160,.2);color:var(--green-deep)}
+.holiday .db-tag{background:rgba(255,143,171,.2);color:var(--pink-deep)}
+
+/* Timeline */
+.timeline{max-width:600px;margin:16px auto 0;padding:0 14px 30px}
+.timeline-card{display:flex;gap:14px;margin-bottom:12px;animation:fadeUp .4s ease both}
+.tl-time{width:52px;flex-shrink:0;text-align:right;padding-top:14px}
+.tl-hour{font-size:16px;font-weight:900;color:var(--text-dark)}
+.tl-period{font-size:9px;color:var(--text-light);letter-spacing:1px}
+.tl-line{width:3px;flex-shrink:0;position:relative}
+.tl-line::before{content:'';position:absolute;top:0;bottom:-12px;left:50%;width:2px;transform:translateX(-50%);background:rgba(200,150,150,.1)}
+.tl-dot{width:12px;height:12px;border-radius:50%;position:absolute;top:16px;left:50%;transform:translateX(-50%);border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.tl-body{flex:1;background:#fff;border-radius:18px;padding:14px 16px;box-shadow:var(--shadow-soft);min-width:0}
+.tl-title{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.tl-desc{font-size:12px;color:var(--text-mid);line-height:1.7}
+.tl-desc .meal-item{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:500;margin:2px 2px 2px 0}
+.meal-item.mi-main{background:var(--orange-light);color:var(--orange-deep)}
+.meal-item.mi-side{background:var(--green-light);color:var(--green-deep)}
+.meal-item.mi-drink{background:var(--blue-light);color:var(--blue-deep)}
+.meal-item.mi-snack{background:var(--yellow-light);color:var(--yellow-deep)}
+.meal-item.mi-fruit{background:var(--pink-light);color:var(--pink-deep)}
+
+/* Dot colors per type */
+.tl-wake .tl-dot{background:var(--yellow)}.tl-meal .tl-dot{background:var(--orange)}.tl-work .tl-dot{background:var(--blue)}.tl-exercise .tl-dot{background:var(--green)}.tl-family .tl-dot{background:var(--pink)}.tl-rest .tl-dot{background:var(--purple)}.tl-read .tl-dot{background:#8AB4D8}.tl-sleep .tl-dot{background:#9B8AAB}
+
+/* Member profile card */
+.member-profile{max-width:600px;margin:0 auto;padding:0 14px}
+.profile-card{background:#fff;border-radius:20px;padding:18px;box-shadow:var(--shadow-card);margin-bottom:12px}
+.profile-header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.profile-emoji{font-size:40px}
+.profile-name{font-size:18px;font-weight:900}
+.profile-role{font-size:12px;color:var(--text-light)}
+.profile-tags{display:flex;flex-wrap:wrap;gap:4px}
+.profile-tag{padding:3px 10px;border-radius:10px;font-size:11px;font-weight:500;background:var(--cream);color:var(--text-mid)}
+
+/* Coming soon placeholder */
+.coming-soon{text-align:center;padding:40px 20px;color:var(--text-light)}
+.coming-soon .cs-emoji{font-size:48px;margin-bottom:10px}
+
+@media(max-width:360px){.hero-title{font-size:19px}.card-name{font-size:16px}.food-grid{grid-template-columns:1fr}.family-avatar{min-width:60px;padding:6px 8px}.family-avatar .fa-emoji{font-size:26px}}
 </style>
 </head>
 <body>
 
+<!-- ===== BOTTOM NAV ===== -->
+<nav class="bottom-nav">
+  <button class="nav-item active" data-page="breakfast" onclick="switchPage('breakfast')">
+    <span class="nav-icon">🍳</span><span class="nav-label">早餐计划</span>
+  </button>
+  <button class="nav-item" data-page="life" onclick="switchPage('life')">
+    <span class="nav-icon">🌈</span><span class="nav-label">今日生活</span>
+  </button>
+</nav>
+
+<!-- ============================= -->
+<!-- ===== PAGE 1: BREAKFAST ===== -->
+<!-- ============================= -->
+<div class="page active" id="pageBf">
+
 <div class="hero">
   <div class="hero-mascot">🍊</div>
-  <h1 class="hero-title">
-    <span class="name-hl">小橙子</span>的<br>爱心健康早餐
-  </h1>
-  <p class="hero-subtitle">邱聿澄小朋友的专属营养美味</p>
-  <div class="hero-family">
-    <span>👨 凯凯爸爸</span>
-    <span>👩 巧英妈妈</span>
-    <span>👧 小橙子</span>
-  </div>
+  <h1 class="hero-title"><span class="hl">小橙子</span>的<br>爱心健康早餐</h1>
+  <p class="hero-sub">邱聿澄小朋友的专属营养美味</p>
+  <div class="hero-family"><span>👨 凯凯爸爸</span><span>👩 巧英妈妈</span><span>👧 小橙子</span></div>
   <div class="hero-badges">
-    <span class="hero-badge b1">🍳 精致手作</span>
-    <span class="hero-badge b2">🥗 营养均衡</span>
-    <span class="hero-badge b3">⚡ 15分钟</span>
-    <span class="hero-badge b4">🔄 30天不重样</span>
+    <span class="badge b1">🍳 精致手作</span><span class="badge b2">🥗 营养均衡</span><span class="badge b3">⚡ 15分钟</span><span class="badge b4">🔄 30天不重样</span>
   </div>
 </div>
 
 <div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num" id="statEaten">0</div>
-    <div class="stat-label">已打卡</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" id="statLiked">0</div>
-    <div class="stat-label">超好吃</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num" id="statCal">0</div>
-    <div class="stat-label">总卡路里</div>
-  </div>
+  <div class="stat-item"><div class="stat-num" id="statEaten">0</div><div class="stat-label">已打卡</div></div>
+  <div class="stat-item"><div class="stat-num" id="statLiked">0</div><div class="stat-label">超好吃</div></div>
+  <div class="stat-item"><div class="stat-num" id="statCal">0</div><div class="stat-label">总卡路里</div></div>
 </div>
 
-<div class="tabs-wrapper">
+<div class="tabs-wrapper" id="bfTabs">
   <div class="tabs-scroll">
     <button class="tab-btn active" data-week="1">🍊 第一周</button>
     <button class="tab-btn" data-week="2">🌼 第二周</button>
@@ -804,589 +282,422 @@ body {
   </div>
 </div>
 
-<div class="content" id="mainContent"></div>
+<div class="content" id="bfContent"></div>
 
 <div class="tips-section" id="tipsSection">
   <div class="tips-title">💝 凯凯爸爸 & 巧英妈妈的小贴士</div>
-  <div class="tip-card"><div class="tip-icon">🥚</div><div class="tip-text"><strong>周末备好半成品</strong><p>卤蛋、酱牛肉、虾仁提前备好冷藏，工作日早上直接用</p></div></div>
-  <div class="tip-card"><div class="tip-icon">🌙</div><div class="tip-text"><strong>隔夜燕麦超省事</strong><p>前一晚泡好燕麦+牛奶，早上加水果坚果就是一顿精致早餐</p></div></div>
-  <div class="tip-card"><div class="tip-icon">👧</div><div class="tip-text"><strong>小橙子参与更开心</strong><p>让宝贝帮忙摆水果、撒蓝莓，参与感让她吃得更香</p></div></div>
-  <div class="tip-card"><div class="tip-icon">🧊</div><div class="tip-text"><strong>速冻饺子馄饨库</strong><p>批量包好冷冻，早上水开5分钟搞定，营养又饱腹</p></div></div>
-  <div class="tip-card"><div class="tip-icon">🍎</div><div class="tip-text"><strong>水果跟着季节走</strong><p>菜单里的水果可随季节替换，核心是每天都有果蔬</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🥚</div><div class="tip-text"><strong>周末备好半成品</strong><p>卤蛋、酱牛肉、虾仁提前备好冷藏，工作日直接用</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🌙</div><div class="tip-text"><strong>隔夜燕麦超省事</strong><p>前一晚泡好燕麦+牛奶，早上加水果坚果就是精致早餐</p></div></div>
+  <div class="tip-card"><div class="tip-icon">👧</div><div class="tip-text"><strong>小橙子参与更开心</strong><p>让宝贝帮忙摆水果撒蓝莓，参与感让她吃得更香</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🧊</div><div class="tip-text"><strong>速冻饺子馄饨库</strong><p>批量包好冷冻，早上水开5分钟搞定</p></div></div>
+  <div class="tip-card"><div class="tip-icon">🍎</div><div class="tip-text"><strong>水果跟着季节走</strong><p>菜单里水果可随季节替换，核心是每天都有果蔬</p></div></div>
 </div>
 
 <div class="footer">
-  凯凯爸爸和巧英妈妈<br>
-  用 <span class="heart">🧡</span> 为小橙子准备每一顿早餐<br>
-  <span style="font-size:11px;opacity:0.5">30天循环 · 爸爸妈妈爱你哟 🍊</span>
+  凯凯爸爸和巧英妈妈 用 <span class="heart">🧡</span> 为小橙子准备每一顿早餐<br>
+  <span style="font-size:11px;opacity:.5">30天循环 · 爸爸妈妈爱你哟 🍊</span>
 </div>
 
+</div><!-- end pageBf -->
+
+<!-- ================================= -->
+<!-- ===== PAGE 2: DAILY LIFE ===== -->
+<!-- ================================= -->
+<div class="page" id="pageLife">
+
+<div class="life-hero">
+  <div class="hero-mascot">🌈</div>
+  <h1 class="hero-title"><span class="hl">邱家</span>每日健康生活</h1>
+  <p class="hero-sub">点击家人头像 · 查看今日专属建议</p>
+</div>
+
+<div class="family-selector" id="familySelector"></div>
+<div class="day-banner" id="dayBanner"></div>
+<div class="member-profile" id="memberProfile"></div>
+<div class="timeline" id="timeline"></div>
+
+<div class="footer">
+  <span class="heart">🧡</span> 全家健康 · 每天都是好日子<br>
+  <span style="font-size:11px;opacity:.5">管理员可手动维护每位家人的信息</span>
+</div>
+
+</div><!-- end pageLife -->
+
 <script>
-const DATA = [
-  {
-    day:1, emoji:'🥪', name:'牛油果鸡蛋吐司塔', cal:420,
-    carb:40, prot:25, fat:25, fiber:10,
-    main:{name:'全麦吐司+牛油果泥', detail:'全麦吐司1片、牛油果半个'},
-    protein:{name:'太阳煎蛋+芝士', detail:'鸡蛋1个、芝士片1片'},
-    veg:{name:'小番茄+生菜', detail:'圣女果5颗、生菜2片'},
-    drink:{name:'鲜牛奶', detail:'纯牛奶200ml'},
-    ingredients:['全麦吐司1片','牛油果半个','鸡蛋1个','芝士片1片','圣女果5颗','生菜2片','牛奶200ml'],
-    steps:['吐司放平底锅小火烘至微脆','牛油果捣成泥铺在吐司上','煎一个太阳蛋，放上芝士片焖10秒融化','蛋放吐司上，旁边摆小番茄和生菜']
-  },
-  {
-    day:2, emoji:'🥣', name:'南瓜小米暖暖粥', cal:380,
-    carb:50, prot:20, fat:15, fiber:15,
-    main:{name:'南瓜小米粥', detail:'小米50g、南瓜100g'},
-    protein:{name:'溏心水煮蛋', detail:'鸡蛋1个煮6分半'},
-    veg:{name:'凉拌黄瓜丝', detail:'黄瓜半根、醋/芝麻油'},
-    drink:{name:'鲜榨橙汁', detail:'橙子2个鲜榨'},
-    ingredients:['小米50g','南瓜100g切丁','鸡蛋1个','黄瓜半根','橙子2个','芝麻油少许'],
-    steps:['小米提前泡20分钟（或前晚泡好）','南瓜切小丁和小米一起煮15分钟','鸡蛋冷水下锅煮6分半捞出过冷水','黄瓜切丝加一滴芝麻油和醋拌匀']
-  },
-  {
-    day:3, emoji:'🥟', name:'杂粮馒头配酱牛肉', cal:450,
-    carb:45, prot:28, fat:18, fiber:9,
-    main:{name:'杂粮小馒头', detail:'杂粮馒头2个蒸热'},
-    protein:{name:'酱牛肉薄片', detail:'酱牛肉60g切薄片'},
-    veg:{name:'圣女果+秋葵星星', detail:'圣女果6颗、秋葵3根焯水切星星'},
-    drink:{name:'醇香豆浆', detail:'黄豆+黑豆豆浆250ml'},
-    ingredients:['杂粮馒头2个','酱牛肉60g','圣女果6颗','秋葵3根','黄豆/黑豆豆浆250ml'],
-    steps:['馒头蒸锅蒸5分钟至软热','酱牛肉（周末卤好冷藏）切薄片摆盘','秋葵焯水30秒捞出横切成星星形状','豆浆加热，秋葵星星让小橙子摆盘']
-  },
-  {
-    day:4, emoji:'🥪', name:'鸡肉芝士三明治', cal:430,
-    carb:38, prot:30, fat:22, fiber:10,
-    main:{name:'全麦三明治', detail:'全麦吐司2片'},
-    protein:{name:'鸡胸肉+芝士', detail:'鸡胸肉50g煎熟、芝士1片'},
-    veg:{name:'蓝莓+生菜', detail:'蓝莓一小盒、生菜3片'},
-    drink:{name:'草莓酸奶', detail:'酸奶150ml+草莓3颗'},
-    ingredients:['全麦吐司2片','鸡胸肉50g','芝士片1片','蓝莓1小盒','生菜3片','酸奶150ml','草莓3颗'],
-    steps:['鸡胸肉切薄片加黑胡椒煎2分钟','吐司铺生菜→鸡肉→芝士→合上','对角切成三角形，小橙子拿着方便','酸奶碗放草莓切片和蓝莓']
-  },
-  {
-    day:5, emoji:'🥣', name:'坚果燕麦能量碗', cal:400,
-    carb:48, prot:18, fat:20, fiber:14,
-    main:{name:'即食燕麦粥', detail:'燕麦片40g+牛奶煮'},
-    protein:{name:'核桃杏仁碎', detail:'核桃3颗、杏仁5粒掰碎'},
-    veg:{name:'香蕉+蓝莓', detail:'香蕉半根切片、蓝莓'},
-    drink:{name:'温热牛奶', detail:'纯牛奶200ml'},
-    ingredients:['燕麦片40g','牛奶400ml','核桃3颗','杏仁5粒','香蕉半根','蓝莓适量','蜂蜜少许'],
-    steps:['燕麦+200ml牛奶微波3分钟或小锅煮','碗里倒入燕麦粥','摆上香蕉片、蓝莓、掰碎的坚果','淋少许蜂蜜，配一杯温牛奶']
-  },
-  {
-    day:6, emoji:'🥞', name:'葱香鸡蛋饼', cal:410,
-    carb:42, prot:22, fat:20, fiber:6,
-    main:{name:'葱花鸡蛋饼', detail:'面粉50g+鸡蛋+葱花'},
-    protein:{name:'鸡蛋（饼里2个）', detail:'鸡蛋2个打入面糊'},
-    veg:{name:'哈密瓜', detail:'哈密瓜2片切小块'},
-    drink:{name:'红枣枸杞水', detail:'红枣3颗+枸杞泡水'},
-    ingredients:['面粉50g','鸡蛋2个','葱花一把','盐少许','哈密瓜2片','红枣3颗','枸杞适量'],
-    steps:['面粉+水+鸡蛋+葱花+少许盐搅成面糊','平底锅刷油，倒面糊摊薄','小火煎至两面金黄约3分钟','哈密瓜切成小块方便小橙子拿']
-  },
-  {
-    day:7, emoji:'🍠', name:'蒸紫薯配茶叶蛋', cal:370,
-    carb:52, prot:18, fat:10, fiber:14,
-    main:{name:'蒸紫薯/红薯', detail:'紫薯或红薯1个蒸熟'},
-    protein:{name:'五香茶叶蛋', detail:'提前卤好的茶叶蛋1个'},
-    veg:{name:'苹果兔子', detail:'苹果半个切兔子形状'},
-    drink:{name:'五谷豆浆', detail:'五谷杂粮豆浆250ml'},
-    ingredients:['紫薯/红薯1个','茶叶蛋1个','苹果半个','五谷豆浆250ml'],
-    steps:['紫薯洗净蒸锅蒸15分钟（或前晚蒸好）','茶叶蛋提前卤好冷藏，早上剥壳即可','苹果切成兔子形状（V形切耳朵）','豆浆加热即可，小橙子超爱紫薯']
-  },
-  {
-    day:8, emoji:'🌯', name:'牛肉生菜卷饼', cal:460,
-    carb:40, prot:30, fat:22, fiber:8,
-    main:{name:'全麦薄饼', detail:'全麦饼皮1张'},
-    protein:{name:'嫩炒牛肉丝', detail:'牛肉60g切丝快炒'},
-    veg:{name:'生菜+胡萝卜丝', detail:'生菜2片、胡萝卜丝'},
-    drink:{name:'鲜牛奶', detail:'纯牛奶200ml'},
-    ingredients:['全麦饼皮1张','牛肉60g','生菜2片','胡萝卜半根','酱油/蚝油少许','牛奶200ml'],
-    steps:['牛肉切丝加少许酱油腌5分钟','热锅快炒牛肉丝1分钟盛出','胡萝卜切细丝（可焯水变软）','饼皮铺生菜→牛肉→胡萝卜→卷起切段']
-  },
-  {
-    day:9, emoji:'🎃', name:'南瓜蒸蛋羹', cal:360,
-    carb:45, prot:20, fat:14, fiber:11,
-    main:{name:'南瓜浓粥', detail:'南瓜150g+大米煮'},
-    protein:{name:'嫩滑蒸蛋羹', detail:'鸡蛋1个+温水蒸'},
-    veg:{name:'猕猴桃花朵', detail:'猕猴桃1个切花形'},
-    drink:{name:'黑芝麻糊', detail:'黑芝麻糊1包冲泡'},
-    ingredients:['南瓜150g','大米30g','鸡蛋1个','猕猴桃1个','黑芝麻糊1包'],
-    steps:['南瓜去皮切块和大米一起煮粥15分钟','鸡蛋打散加1.5倍温水过筛倒碗里','蒸锅水开后小火蒸8分钟至嫩滑','猕猴桃切片摆花朵形状']
-  },
-  {
-    day:10, emoji:'🍞', name:'法式蜂蜜煎吐司', cal:430,
-    carb:42, prot:22, fat:22, fiber:4,
-    main:{name:'法式煎吐司', detail:'吐司蘸蛋液煎至金黄'},
-    protein:{name:'蛋液+牛奶', detail:'鸡蛋1个+牛奶调蛋液'},
-    veg:{name:'草莓心形', detail:'草莓5颗对半切心形'},
-    drink:{name:'蜂蜜温水', detail:'蜂蜜1勺+温水'},
-    ingredients:['吐司2片','鸡蛋1个','牛奶50ml','草莓5颗','蜂蜜适量','黄油少许'],
-    steps:['鸡蛋+牛奶打匀做蛋液','吐司两面蘸满蛋液','小火黄油煎至两面金黄','摆上草莓淋蜂蜜，拍照超好看']
-  },
-  {
-    day:11, emoji:'🌽', name:'甜玉米荷包蛋套餐', cal:390,
-    carb:48, prot:22, fat:14, fiber:12,
-    main:{name:'甜糯玉米', detail:'甜玉米1根蒸/煮'},
-    protein:{name:'溏心荷包蛋', detail:'鸡蛋1个煎至边缘焦脆'},
-    veg:{name:'西蓝花小树', detail:'西蓝花5朵焯水（像小树）'},
-    drink:{name:'原味豆浆', detail:'豆浆250ml'},
-    ingredients:['甜玉米1根','鸡蛋1个','西蓝花5朵','豆浆250ml','海盐/黑胡椒少许'],
-    steps:['玉米提前蒸好或微波5分钟','煎蛋：油热转小火打入鸡蛋撒海盐','西蓝花水开焯30秒捞出（告诉小橙子这是小树）','玉米切段方便小朋友拿着啃']
-  },
-  {
-    day:12, emoji:'🍙', name:'肉松海苔饭团', cal:420,
-    carb:50, prot:20, fat:16, fiber:4,
-    main:{name:'三角饭团', detail:'米饭1碗捏成三角'},
-    protein:{name:'肉松+蛋皮丝', detail:'肉松2勺、蛋皮切丝'},
-    veg:{name:'小番茄', detail:'小番茄6颗'},
-    drink:{name:'原味酸奶', detail:'酸奶150ml'},
-    ingredients:['米饭1碗','肉松2大勺','鸡蛋1个','海苔2片','小番茄6颗','酸奶150ml'],
-    steps:['鸡蛋摊成薄蛋皮切细丝','米饭加肉松和蛋丝拌匀','手沾水捏三角饭团包上海苔','和小橙子一起捏饭团超有趣']
-  },
-  {
-    day:13, emoji:'🦐', name:'虾仁山药小米粥', cal:380,
-    carb:46, prot:24, fat:12, fiber:8,
-    main:{name:'山药小米粥', detail:'小米50g+山药80g'},
-    protein:{name:'白灼虾仁', detail:'鲜虾仁8只焯水'},
-    veg:{name:'秋葵星星+枸杞', detail:'秋葵3根切星星'},
-    drink:{name:'鲜榨橙汁', detail:'橙子2个'},
-    ingredients:['小米50g','山药80g','鲜虾仁8只','秋葵3根','枸杞适量','橙子2个'],
-    steps:['山药去皮切丁和小米一起煮粥','虾仁去虾线水开焯1分钟变红捞出','秋葵焯水横切成星星形状','粥里放虾仁和枸杞，秋葵摆旁边']
-  },
-  {
-    day:14, emoji:'🥯', name:'三文鱼奶酪贝果', cal:470,
-    carb:40, prot:28, fat:24, fiber:8,
-    main:{name:'全麦贝果', detail:'贝果1个横切'},
-    protein:{name:'三文鱼+奶油芝士', detail:'烟熏三文鱼3片、奶油芝士'},
-    veg:{name:'混合莓果拼盘', detail:'蓝莓+树莓+草莓'},
-    drink:{name:'温热牛奶', detail:'牛奶200ml'},
-    ingredients:['全麦贝果1个','烟熏三文鱼3片','奶油芝士20g','蓝莓/树莓/草莓','牛奶200ml'],
-    steps:['贝果横切抹上奶油芝士','铺上三文鱼片','莓果洗净装小碗拼个彩虹','整套摆盘超有仪式感']
-  },
-  {
-    day:15, emoji:'🥣', name:'皮蛋瘦肉粥+油条', cal:440,
-    carb:50, prot:24, fat:18, fiber:8,
-    main:{name:'皮蛋瘦肉粥', detail:'大米+皮蛋+瘦肉丝'},
-    protein:{name:'瘦肉丝+皮蛋', detail:'猪瘦肉50g切丝、皮蛋1个'},
-    veg:{name:'小油条+橙瓣', detail:'小油条1根、橙子半个'},
-    drink:{name:'粥即饮品', detail:'一碗热粥暖暖的'},
-    ingredients:['大米50g','皮蛋1个','猪瘦肉50g','小油条1根','橙子半个','葱花/姜丝少许'],
-    steps:['大米煮至开花加姜丝','瘦肉切丝加少许盐和淀粉下粥搅散','皮蛋切小块加入再煮3分钟','撒葱花配油条段和橙子瓣']
-  },
-  {
-    day:16, emoji:'🥪', name:'黑椒鸡肉帕尼尼', cal:440,
-    carb:38, prot:32, fat:20, fiber:10,
-    main:{name:'帕尼尼压烤三明治', detail:'全麦面包2片'},
-    protein:{name:'黑椒鸡胸肉', detail:'鸡胸肉60g切片煎'},
-    veg:{name:'生菜+番茄片', detail:'生菜2片、番茄2片'},
-    drink:{name:'蓝莓酸奶', detail:'酸奶150ml+蓝莓'},
-    ingredients:['全麦面包2片','鸡胸肉60g','番茄半个','生菜2片','蓝莓','酸奶150ml','黑胡椒/橄榄油少许'],
-    steps:['鸡胸肉切薄片加黑胡椒和橄榄油煎熟','番茄切片','面包→生菜→鸡肉→番茄→面包叠好','平底锅用铲子压着煎至焦脆']
-  },
-  {
-    day:17, emoji:'🍰', name:'紫米椰汁糕', cal:390,
-    carb:52, prot:18, fat:14, fiber:10,
-    main:{name:'紫米糕', detail:'紫米+椰浆蒸糕'},
-    protein:{name:'水煮蛋', detail:'鸡蛋1个'},
-    veg:{name:'火龙果挖球', detail:'红心火龙果半个'},
-    drink:{name:'温牛奶', detail:'牛奶200ml'},
-    ingredients:['紫米100g','椰浆50ml','鸡蛋1个','红心火龙果半个','牛奶200ml','糖少许'],
-    steps:['紫米泡4小时加椰浆和少许糖蒸30分钟（前晚做）','早上切块摆盘','煮一个水煮蛋','火龙果用圆勺挖球摆盘超好看']
-  },
-  {
-    day:18, emoji:'🥟', name:'鲜虾韭菜盒子', cal:420,
-    carb:40, prot:26, fat:20, fiber:4,
-    main:{name:'韭菜虾仁盒子', detail:'面皮+韭菜+虾仁+蛋'},
-    protein:{name:'虾仁+鸡蛋馅', detail:'虾仁6只+鸡蛋1个'},
-    veg:{name:'芒果切花', detail:'芒果半个切花摆盘'},
-    drink:{name:'原味豆浆', detail:'豆浆250ml'},
-    ingredients:['面粉80g','韭菜50g','虾仁6只','鸡蛋1个','芒果半个','豆浆250ml'],
-    steps:['（可提前做好冷冻）面粉和面擀皮','虾仁切碎+韭菜碎+炒蛋碎拌馅','包半圆形平底锅煎至两面金黄','芒果切花摆盘小橙子超爱']
-  },
-  {
-    day:19, emoji:'🫙', name:'隔夜燕麦果昔杯', cal:380,
-    carb:48, prot:18, fat:16, fiber:14,
-    main:{name:'隔夜燕麦', detail:'燕麦+牛奶泡一夜'},
-    protein:{name:'希腊酸奶', detail:'希腊酸奶100g'},
-    veg:{name:'奇亚籽+蓝莓', detail:'奇亚籽1勺、蓝莓'},
-    drink:{name:'酸奶即饮品', detail:'拌在一起就是一餐'},
-    ingredients:['燕麦片40g','牛奶150ml','希腊酸奶100g','奇亚籽1小勺','蓝莓适量','蜂蜜少许'],
-    steps:['前一晚：燕麦+牛奶+奇亚籽装玻璃杯放冰箱','早上取出铺一层希腊酸奶','撒上蓝莓淋蜂蜜','零烹饪！小橙子可以帮忙撒蓝莓']
-  },
-  {
-    day:20, emoji:'🫔', name:'香菇猪肉烧麦', cal:430,
-    carb:46, prot:24, fat:18, fiber:6,
-    main:{name:'糯米烧麦', detail:'烧麦5个蒸热'},
-    protein:{name:'猪肉+香菇馅', detail:'猪肉+香菇+糯米'},
-    veg:{name:'葡萄小串', detail:'葡萄洗净摘小串'},
-    drink:{name:'五谷豆浆', detail:'五谷杂粮豆浆250ml'},
-    ingredients:['速冻烧麦5个','葡萄1小串','五谷豆浆250ml'],
-    steps:['（提前包好冷冻）烧麦蒸锅蒸8分钟','葡萄洗净摘成小串方便拿','豆浆加热','10分钟搞定的省心早餐']
-  },
-  {
-    day:21, emoji:'🥔', name:'黄金土豆丝煎饼', cal:400,
-    carb:44, prot:20, fat:18, fiber:8,
-    main:{name:'土豆丝饼', detail:'土豆丝+少许面粉煎'},
-    protein:{name:'太阳煎蛋', detail:'鸡蛋1个'},
-    veg:{name:'当季瓜果', detail:'应季水果切块'},
-    drink:{name:'温牛奶', detail:'牛奶200ml'},
-    ingredients:['土豆1个','面粉20g','鸡蛋1个','当季水果','牛奶200ml','盐/葱花少许'],
-    steps:['土豆擦丝加盐抓出水分','加面粉和葱花拌匀','平底锅摊成饼煎至两面金黄','配煎蛋和水果，金灿灿的超好看']
-  },
-  {
-    day:22, emoji:'🍜', name:'番茄鸡蛋宝宝面', cal:400,
-    carb:48, prot:20, fat:14, fiber:8,
-    main:{name:'番茄鸡蛋面', detail:'细面条+番茄+鸡蛋'},
-    protein:{name:'蛋花+番茄', detail:'鸡蛋1个打蛋花'},
-    veg:{name:'菠菜', detail:'菠菜3棵焯水切碎'},
-    drink:{name:'面汤即饮品', detail:'热乎乎的面汤'},
-    ingredients:['细面条1把','番茄1个','鸡蛋1个','菠菜3棵','葱花少许'],
-    steps:['番茄切块炒出汁','加水烧开下面条煮3分钟','打入蛋花加焯过水的菠菜碎','面条切短方便小橙子吃']
-  },
-  {
-    day:23, emoji:'🍮', name:'芋泥奶香蒸糕', cal:390,
-    carb:50, prot:18, fat:14, fiber:8,
-    main:{name:'芋泥蒸糕', detail:'芋头蒸熟捣泥+牛奶'},
-    protein:{name:'五香卤蛋', detail:'卤蛋1个'},
-    veg:{name:'桃子/李子', detail:'当季水果1个切块'},
-    drink:{name:'鲜牛奶', detail:'牛奶200ml'},
-    ingredients:['芋头150g','牛奶30ml','卤蛋1个','当季水果1个','牛奶200ml','糖少许'],
-    steps:['芋头去皮蒸15分钟（或前晚蒸好）','趁热捣泥加牛奶和少许糖拌匀','用小模具压成可爱形状','配卤蛋和水果块']
-  },
-  {
-    day:24, emoji:'🥟', name:'抱蛋煎饺', cal:440,
-    carb:42, prot:26, fat:20, fiber:4,
-    main:{name:'抱蛋煎饺', detail:'速冻饺子+蛋液煎'},
-    protein:{name:'肉馅+鸡蛋', detail:'饺子馅+鸡蛋2个'},
-    veg:{name:'黄瓜条蘸酱', detail:'黄瓜半根切条'},
-    drink:{name:'原味酸奶', detail:'酸奶150ml'},
-    ingredients:['速冻饺子8个','鸡蛋2个','黄瓜半根','酸奶150ml','葱花/芝麻少许'],
-    steps:['饺子平底锅摆好加少许水盖盖焖5分钟','水干后倒入打散的蛋液转小火','蛋液凝固后撒葱花和芝麻','黄瓜切条，小橙子蘸酸奶吃']
-  },
-  {
-    day:25, emoji:'🫘', name:'红豆薏米暖粥', cal:370,
-    carb:54, prot:16, fat:10, fiber:16,
-    main:{name:'红豆薏米粥', detail:'红豆+薏米+大米煮'},
-    protein:{name:'核桃+腰果', detail:'核桃3颗+腰果5粒'},
-    veg:{name:'樱桃', detail:'樱桃一小碗'},
-    drink:{name:'粥即饮品', detail:'一碗热粥'},
-    ingredients:['红豆30g','薏米20g','大米30g','核桃3颗','腰果5粒','樱桃适量'],
-    steps:['红豆薏米提前泡一夜','和大米一起煮30分钟（或电饭锅预约）','碗里撒碎坚果','配一碗小樱桃（去核给小橙子）']
-  },
-  {
-    day:26, emoji:'🥓', name:'培根芝士吐司卷', cal:460,
-    carb:36, prot:26, fat:28, fiber:10,
-    main:{name:'培根芝士吐司', detail:'吐司+培根+芝士煎'},
-    protein:{name:'培根+芝士', detail:'培根2片、芝士1片'},
-    veg:{name:'牛油果+小番茄', detail:'牛油果半个、小番茄5颗'},
-    drink:{name:'鲜榨橙汁', detail:'橙子2个'},
-    ingredients:['吐司1片','培根2片','芝士1片','牛油果半个','小番茄5颗','橙子2个'],
-    steps:['培根平底锅煎至微脆','吐司放芝士和培根对折','锅里煎至芝士融化','牛油果切片扇形摆盘配小番茄']
-  },
-  {
-    day:27, emoji:'🥟', name:'鲜虾小馄饨', cal:400,
-    carb:44, prot:26, fat:14, fiber:6,
-    main:{name:'鲜虾馄饨', detail:'馄饨10个+紫菜蛋花汤'},
-    protein:{name:'虾仁馅', detail:'虾仁+少许猪肉馅'},
-    veg:{name:'紫菜蛋花', detail:'紫菜+鸡蛋做汤'},
-    drink:{name:'馄饨汤', detail:'鲜美的汤'},
-    ingredients:['速冻馄饨10个','紫菜少许','鸡蛋1个','虾皮少许','葱花/香油少许'],
-    steps:['（提前包好冷冻）水开下馄饨煮5分钟','碗里放紫菜、虾皮、香油','汤里打入蛋花','盛馄饨和汤撒葱花']
-  },
-  {
-    day:28, emoji:'🥞', name:'蓝莓香蕉松饼', cal:420,
-    carb:48, prot:20, fat:18, fiber:6,
-    main:{name:'香蕉松饼', detail:'香蕉+面粉+鸡蛋煎'},
-    protein:{name:'鸡蛋+牛奶', detail:'鸡蛋1个+牛奶（面糊里）'},
-    veg:{name:'蓝莓+枫糖', detail:'蓝莓一把、枫糖浆少许'},
-    drink:{name:'温牛奶', detail:'牛奶200ml'},
-    ingredients:['香蕉1根','面粉40g','鸡蛋1个','牛奶250ml','蓝莓一把','枫糖浆少许'],
-    steps:['香蕉捣泥+面粉+鸡蛋+50ml牛奶搅成面糊','小火煎小圆饼每面1分钟','叠3片撒蓝莓淋枫糖','小橙子可以帮忙放蓝莓！']
-  },
-  {
-    day:29, emoji:'🫓', name:'杂粮煎饼果子', cal:440,
-    carb:44, prot:22, fat:22, fiber:8,
-    main:{name:'杂粮煎饼', detail:'杂粮面糊摊薄饼'},
-    protein:{name:'鸡蛋+薄脆', detail:'鸡蛋1个打在饼上'},
-    veg:{name:'生菜+甜面酱', detail:'生菜2片'},
-    drink:{name:'醇香豆浆', detail:'豆浆250ml'},
-    ingredients:['杂粮粉50g','鸡蛋1个','薄脆1片','生菜2片','甜面酱','豆浆250ml'],
-    steps:['杂粮粉加水搅成面糊','平底锅摊薄饼打蛋摊开','放薄脆刷甜面酱铺生菜','卷起切段方便小橙子拿着吃']
-  },
-  {
-    day:30, emoji:'🥣', name:'缤纷水果坚果碗', cal:400,
-    carb:50, prot:16, fat:18, fiber:16,
-    main:{name:'奶香燕麦底', detail:'燕麦+牛奶煮底'},
-    protein:{name:'混合坚果+酸奶', detail:'坚果碎+酸奶100g'},
-    veg:{name:'彩虹水果拼盘', detail:'3种水果切块拼彩虹'},
-    drink:{name:'酸奶即饮品', detail:'拌在一起'},
-    ingredients:['燕麦片40g','牛奶150ml','酸奶100g','混合坚果一把','当季水果3种','蜂蜜少许'],
-    steps:['燕麦+牛奶煮3分钟倒碗里','铺一层酸奶','摆上彩虹色水果块和坚果碎','最后一天仪式感拉满！和小橙子一起摆']
-  }
+// ============================================================
+// DATA: BREAKFAST (same as before, condensed)
+// ============================================================
+const BF=[
+{day:1,emoji:'🥪',name:'牛油果鸡蛋吐司塔',cal:420,carb:40,prot:25,fat:25,fiber:10,main:{name:'全麦吐司+牛油果泥',detail:'全麦吐司1片、牛油果半个'},protein:{name:'太阳煎蛋+芝士',detail:'鸡蛋1个、芝士片1片'},veg:{name:'小番茄+生菜',detail:'圣女果5颗、生菜2片'},drink:{name:'鲜牛奶',detail:'纯牛奶200ml'},ingredients:['全麦吐司1片','牛油果半个','鸡蛋1个','芝士片1片','圣女果5颗','生菜2片','牛奶200ml'],steps:['吐司放平底锅小火烘至微脆','牛油果捣成泥铺在吐司上','煎一个太阳蛋放上芝士片焖10秒','蛋放吐司上旁边摆小番茄和生菜']},
+{day:2,emoji:'🥣',name:'南瓜小米暖暖粥',cal:380,carb:50,prot:20,fat:15,fiber:15,main:{name:'南瓜小米粥',detail:'小米50g、南瓜100g'},protein:{name:'溏心水煮蛋',detail:'鸡蛋1个煮6分半'},veg:{name:'凉拌黄瓜丝',detail:'黄瓜半根、醋/芝麻油'},drink:{name:'鲜榨橙汁',detail:'橙子2个鲜榨'},ingredients:['小米50g','南瓜100g','鸡蛋1个','黄瓜半根','橙子2个'],steps:['小米提前泡20分钟','南瓜切丁和小米煮15分钟','鸡蛋冷水煮6分半过冷水','黄瓜切丝加芝麻油和醋拌匀']},
+{day:3,emoji:'🥟',name:'杂粮馒头配酱牛肉',cal:450,carb:45,prot:28,fat:18,fiber:9,main:{name:'杂粮小馒头',detail:'杂粮馒头2个蒸热'},protein:{name:'酱牛肉薄片',detail:'酱牛肉60g切薄片'},veg:{name:'圣女果+秋葵星星',detail:'圣女果6颗、秋葵3根'},drink:{name:'醇香豆浆',detail:'豆浆250ml'},ingredients:['杂粮馒头2个','酱牛肉60g','圣女果6颗','秋葵3根','豆浆250ml'],steps:['馒头蒸5分钟','酱牛肉切薄片摆盘','秋葵焯水横切成星星','豆浆加热搭配']},
+{day:4,emoji:'🥪',name:'鸡肉芝士三明治',cal:430,carb:38,prot:30,fat:22,fiber:10,main:{name:'全麦三明治',detail:'全麦吐司2片'},protein:{name:'鸡胸肉+芝士',detail:'鸡胸肉50g、芝士1片'},veg:{name:'蓝莓+生菜',detail:'蓝莓一小盒、生菜3片'},drink:{name:'草莓酸奶',detail:'酸奶150ml+草莓'},ingredients:['全麦吐司2片','鸡胸肉50g','芝士片1片','蓝莓','生菜3片','酸奶150ml','草莓3颗'],steps:['鸡胸肉加黑胡椒煎2分钟','吐司铺生菜→鸡肉→芝士→合上','对角切三角形','酸奶碗放草莓和蓝莓']},
+{day:5,emoji:'🥣',name:'坚果燕麦能量碗',cal:400,carb:48,prot:18,fat:20,fiber:14,main:{name:'即食燕麦粥',detail:'燕麦片40g+牛奶煮'},protein:{name:'核桃杏仁碎',detail:'核桃3颗、杏仁5粒'},veg:{name:'香蕉+蓝莓',detail:'香蕉半根、蓝莓'},drink:{name:'温热牛奶',detail:'牛奶200ml'},ingredients:['燕麦片40g','牛奶400ml','核桃3颗','杏仁5粒','香蕉半根','蓝莓','蜂蜜少许'],steps:['燕麦+牛奶微波3分钟','碗里倒入燕麦粥','摆香蕉片蓝莓和坚果碎','淋少许蜂蜜']},
+{day:6,emoji:'🥞',name:'葱香鸡蛋饼',cal:410,carb:42,prot:22,fat:20,fiber:6,main:{name:'葱花鸡蛋饼',detail:'面粉50g+鸡蛋+葱花'},protein:{name:'鸡蛋（饼里2个）',detail:'鸡蛋2个打入面糊'},veg:{name:'哈密瓜',detail:'哈密瓜2片切块'},drink:{name:'红枣枸杞水',detail:'红枣3颗+枸杞'},ingredients:['面粉50g','鸡蛋2个','葱花','盐少许','哈密瓜2片','红枣3颗','枸杞'],steps:['面粉+水+鸡蛋+葱花+盐搅成面糊','平底锅刷油倒面糊摊薄','小火煎至两面金黄','哈密瓜切小块']},
+{day:7,emoji:'🍠',name:'蒸紫薯配茶叶蛋',cal:370,carb:52,prot:18,fat:10,fiber:14,main:{name:'蒸紫薯/红薯',detail:'紫薯1个蒸熟'},protein:{name:'五香茶叶蛋',detail:'茶叶蛋1个'},veg:{name:'苹果兔子',detail:'苹果半个切兔子'},drink:{name:'五谷豆浆',detail:'豆浆250ml'},ingredients:['紫薯1个','茶叶蛋1个','苹果半个','五谷豆浆250ml'],steps:['紫薯蒸15分钟（或前晚蒸好）','茶叶蛋剥壳即可','苹果切兔子形状','豆浆加热']},
+{day:8,emoji:'🌯',name:'牛肉生菜卷饼',cal:460,carb:40,prot:30,fat:22,fiber:8,main:{name:'全麦薄饼',detail:'全麦饼皮1张'},protein:{name:'嫩炒牛肉丝',detail:'牛肉60g切丝'},veg:{name:'生菜+胡萝卜丝',detail:'生菜2片、胡萝卜丝'},drink:{name:'鲜牛奶',detail:'牛奶200ml'},ingredients:['全麦饼皮1张','牛肉60g','生菜2片','胡萝卜半根','牛奶200ml'],steps:['牛肉切丝加酱油腌5分钟','热锅快炒1分钟','胡萝卜切细丝','饼皮铺菜卷起切段']},
+{day:9,emoji:'🎃',name:'南瓜蒸蛋羹',cal:360,carb:45,prot:20,fat:14,fiber:11,main:{name:'南瓜浓粥',detail:'南瓜150g+大米'},protein:{name:'嫩滑蒸蛋羹',detail:'鸡蛋1个+温水蒸'},veg:{name:'猕猴桃花朵',detail:'猕猴桃1个切花形'},drink:{name:'黑芝麻糊',detail:'黑芝麻糊1包'},ingredients:['南瓜150g','大米30g','鸡蛋1个','猕猴桃1个','黑芝麻糊1包'],steps:['南瓜切块和大米煮粥15分钟','鸡蛋打散加温水过筛','小火蒸8分钟至嫩滑','猕猴桃切星星形']},
+{day:10,emoji:'🍞',name:'法式蜂蜜煎吐司',cal:430,carb:42,prot:22,fat:22,fiber:4,main:{name:'法式煎吐司',detail:'吐司蘸蛋液煎'},protein:{name:'蛋液+牛奶',detail:'鸡蛋1个+牛奶调蛋液'},veg:{name:'草莓心形',detail:'草莓5颗对半切'},drink:{name:'蜂蜜温水',detail:'蜂蜜+温水'},ingredients:['吐司2片','鸡蛋1个','牛奶50ml','草莓5颗','蜂蜜','黄油少许'],steps:['鸡蛋+牛奶打匀','吐司两面蘸蛋液','黄油小火煎至金黄','摆草莓淋蜂蜜']},
+{day:11,emoji:'🌽',name:'甜玉米荷包蛋套餐',cal:390,carb:48,prot:22,fat:14,fiber:12,main:{name:'甜糯玉米',detail:'甜玉米1根'},protein:{name:'溏心荷包蛋',detail:'鸡蛋1个'},veg:{name:'西蓝花小树',detail:'西蓝花5朵焯水'},drink:{name:'原味豆浆',detail:'豆浆250ml'},ingredients:['甜玉米1根','鸡蛋1个','西蓝花5朵','豆浆250ml'],steps:['玉米微波5分钟','煎蛋撒海盐黑胡椒','西蓝花焯30秒','玉米切段方便拿']},
+{day:12,emoji:'🍙',name:'肉松海苔饭团',cal:420,carb:50,prot:20,fat:16,fiber:4,main:{name:'三角饭团',detail:'米饭1碗捏三角'},protein:{name:'肉松+蛋皮丝',detail:'肉松2勺、蛋皮切丝'},veg:{name:'小番茄',detail:'小番茄6颗'},drink:{name:'原味酸奶',detail:'酸奶150ml'},ingredients:['米饭1碗','肉松2勺','鸡蛋1个','海苔2片','小番茄6颗','酸奶150ml'],steps:['鸡蛋摊薄蛋皮切丝','米饭加肉松和蛋丝拌匀','捏三角饭团包海苔','小橙子一起捏超有趣']},
+{day:13,emoji:'🦐',name:'虾仁山药小米粥',cal:380,carb:46,prot:24,fat:12,fiber:8,main:{name:'山药小米粥',detail:'小米50g+山药80g'},protein:{name:'白灼虾仁',detail:'鲜虾仁8只'},veg:{name:'秋葵星星+枸杞',detail:'秋葵3根切星星'},drink:{name:'鲜榨橙汁',detail:'橙子2个'},ingredients:['小米50g','山药80g','虾仁8只','秋葵3根','枸杞','橙子2个'],steps:['山药切丁和小米煮粥','虾仁焯1分钟','秋葵横切成星星','粥里放虾仁和枸杞']},
+{day:14,emoji:'🥯',name:'三文鱼奶酪贝果',cal:470,carb:40,prot:28,fat:24,fiber:8,main:{name:'全麦贝果',detail:'贝果1个横切'},protein:{name:'三文鱼+奶油芝士',detail:'烟熏三文鱼3片'},veg:{name:'混合莓果拼盘',detail:'蓝莓+树莓+草莓'},drink:{name:'温热牛奶',detail:'牛奶200ml'},ingredients:['全麦贝果1个','烟熏三文鱼3片','奶油芝士20g','混合莓果','牛奶200ml'],steps:['贝果横切抹奶油芝士','铺三文鱼片','莓果装碗拼彩虹','整套摆盘超有仪式感']},
+{day:15,emoji:'🥣',name:'皮蛋瘦肉粥+油条',cal:440,carb:50,prot:24,fat:18,fiber:8,main:{name:'皮蛋瘦肉粥',detail:'大米+皮蛋+瘦肉丝'},protein:{name:'瘦肉丝+皮蛋',detail:'瘦肉50g、皮蛋1个'},veg:{name:'小油条+橙瓣',detail:'油条1根、橙子半个'},drink:{name:'粥即饮品',detail:'一碗热粥'},ingredients:['大米50g','皮蛋1个','瘦肉50g','油条1根','橙子半个'],steps:['大米煮开花加姜丝','瘦肉丝加盐和淀粉下粥','皮蛋切块煮3分钟','配油条段和橙瓣']},
+{day:16,emoji:'🥪',name:'黑椒鸡肉帕尼尼',cal:440,carb:38,prot:32,fat:20,fiber:10,main:{name:'帕尼尼三明治',detail:'全麦面包2片'},protein:{name:'黑椒鸡胸肉',detail:'鸡胸肉60g'},veg:{name:'生菜+番茄片',detail:'生菜2片、番茄2片'},drink:{name:'蓝莓酸奶',detail:'酸奶150ml+蓝莓'},ingredients:['全麦面包2片','鸡胸肉60g','番茄半个','生菜2片','蓝莓','酸奶150ml'],steps:['鸡肉切片加黑胡椒煎熟','番茄切片','叠好用铲子压着煎至焦脆','酸奶加蓝莓']},
+{day:17,emoji:'🍰',name:'紫米椰汁糕',cal:390,carb:52,prot:18,fat:14,fiber:10,main:{name:'紫米糕',detail:'紫米+椰浆蒸糕'},protein:{name:'水煮蛋',detail:'鸡蛋1个'},veg:{name:'火龙果挖球',detail:'红心火龙果半个'},drink:{name:'温牛奶',detail:'牛奶200ml'},ingredients:['紫米100g','椰浆50ml','鸡蛋1个','火龙果半个','牛奶200ml'],steps:['紫米泡4小时加椰浆蒸30分钟（前晚做）','早上切块摆盘','煮水煮蛋','火龙果挖球超好看']},
+{day:18,emoji:'🥟',name:'鲜虾韭菜盒子',cal:420,carb:40,prot:26,fat:20,fiber:4,main:{name:'韭菜虾仁盒子',detail:'面皮+韭菜+虾仁'},protein:{name:'虾仁+鸡蛋馅',detail:'虾仁6只+鸡蛋1个'},veg:{name:'芒果切花',detail:'芒果半个'},drink:{name:'原味豆浆',detail:'豆浆250ml'},ingredients:['面粉80g','韭菜50g','虾仁6只','鸡蛋1个','芒果半个','豆浆250ml'],steps:['面粉和面擀皮','虾仁碎+韭菜碎+炒蛋碎拌馅','煎至两面金黄','配芒果切花']},
+{day:19,emoji:'🫙',name:'隔夜燕麦果昔杯',cal:380,carb:48,prot:18,fat:16,fiber:14,main:{name:'隔夜燕麦',detail:'燕麦+牛奶泡一夜'},protein:{name:'希腊酸奶',detail:'希腊酸奶100g'},veg:{name:'奇亚籽+蓝莓',detail:'奇亚籽1勺、蓝莓'},drink:{name:'酸奶即饮品',detail:'拌在一起'},ingredients:['燕麦片40g','牛奶150ml','希腊酸奶100g','奇亚籽','蓝莓','蜂蜜'],steps:['前晚燕麦+牛奶+奇亚籽放冰箱','早上铺酸奶','撒蓝莓淋蜂蜜','零烹饪！']},
+{day:20,emoji:'🫔',name:'香菇猪肉烧麦',cal:430,carb:46,prot:24,fat:18,fiber:6,main:{name:'糯米烧麦',detail:'烧麦5个蒸热'},protein:{name:'猪肉+香菇馅',detail:'猪肉+香菇+糯米'},veg:{name:'葡萄小串',detail:'葡萄1小串'},drink:{name:'五谷豆浆',detail:'豆浆250ml'},ingredients:['速冻烧麦5个','葡萄1小串','五谷豆浆250ml'],steps:['烧麦蒸8分钟','葡萄洗净摘小串','豆浆加热','10分钟搞定']},
+{day:21,emoji:'🥔',name:'黄金土豆丝煎饼',cal:400,carb:44,prot:20,fat:18,fiber:8,main:{name:'土豆丝饼',detail:'土豆丝+面粉煎'},protein:{name:'太阳煎蛋',detail:'鸡蛋1个'},veg:{name:'当季瓜果',detail:'应季水果'},drink:{name:'温牛奶',detail:'牛奶200ml'},ingredients:['土豆1个','面粉20g','鸡蛋1个','水果','牛奶200ml'],steps:['土豆擦丝加盐抓水','加面粉葱花拌匀','摊饼煎至金黄','配煎蛋和水果']},
+{day:22,emoji:'🍜',name:'番茄鸡蛋宝宝面',cal:400,carb:48,prot:20,fat:14,fiber:8,main:{name:'番茄鸡蛋面',detail:'细面+番茄+鸡蛋'},protein:{name:'蛋花+番茄',detail:'鸡蛋1个'},veg:{name:'菠菜',detail:'菠菜3棵焯水切碎'},drink:{name:'面汤',detail:'热乎乎面汤'},ingredients:['细面1把','番茄1个','鸡蛋1个','菠菜3棵'],steps:['番茄炒出汁','加水烧开下面条','打蛋花加菠菜碎','面条切短方便吃']},
+{day:23,emoji:'🍮',name:'芋泥奶香蒸糕',cal:390,carb:50,prot:18,fat:14,fiber:8,main:{name:'芋泥蒸糕',detail:'芋头蒸熟捣泥'},protein:{name:'五香卤蛋',detail:'卤蛋1个'},veg:{name:'桃子/李子',detail:'当季水果1个'},drink:{name:'鲜牛奶',detail:'牛奶200ml'},ingredients:['芋头150g','牛奶30ml','卤蛋1个','水果','牛奶200ml'],steps:['芋头蒸15分钟捣泥','加牛奶和糖拌匀','用模具压可爱形状','配卤蛋和水果']},
+{day:24,emoji:'🥟',name:'抱蛋煎饺',cal:440,carb:42,prot:26,fat:20,fiber:4,main:{name:'抱蛋煎饺',detail:'速冻饺子+蛋液'},protein:{name:'肉馅+鸡蛋',detail:'饺子馅+鸡蛋2个'},veg:{name:'黄瓜条蘸酱',detail:'黄瓜半根切条'},drink:{name:'原味酸奶',detail:'酸奶150ml'},ingredients:['速冻饺子8个','鸡蛋2个','黄瓜半根','酸奶150ml'],steps:['饺子加水焖5分钟','水干倒蛋液转小火','撒葱花芝麻','黄瓜蘸酸奶']},
+{day:25,emoji:'🫘',name:'红豆薏米暖粥',cal:370,carb:54,prot:16,fat:10,fiber:16,main:{name:'红豆薏米粥',detail:'红豆+薏米+大米'},protein:{name:'核桃+腰果',detail:'核桃3颗+腰果5粒'},veg:{name:'樱桃',detail:'樱桃一小碗'},drink:{name:'粥即饮品',detail:'一碗热粥'},ingredients:['红豆30g','薏米20g','大米30g','核桃3颗','腰果5粒','樱桃'],steps:['红豆薏米泡一夜','和大米煮30分钟','撒碎坚果','配小樱桃']},
+{day:26,emoji:'🥓',name:'培根芝士吐司卷',cal:460,carb:36,prot:26,fat:28,fiber:10,main:{name:'培根芝士吐司',detail:'吐司+培根+芝士'},protein:{name:'培根+芝士',detail:'培根2片、芝士1片'},veg:{name:'牛油果+小番茄',detail:'牛油果半个'},drink:{name:'鲜榨橙汁',detail:'橙子2个'},ingredients:['吐司1片','培根2片','芝士1片','牛油果半个','小番茄5颗','橙子2个'],steps:['培根煎至微脆','吐司放芝士培根对折','煎至芝士融化','牛油果切扇形摆盘']},
+{day:27,emoji:'🥟',name:'鲜虾小馄饨',cal:400,carb:44,prot:26,fat:14,fiber:6,main:{name:'鲜虾馄饨',detail:'馄饨10个'},protein:{name:'虾仁馅',detail:'虾仁+猪肉馅'},veg:{name:'紫菜蛋花',detail:'紫菜+鸡蛋做汤'},drink:{name:'馄饨汤',detail:'鲜美汤'},ingredients:['速冻馄饨10个','紫菜','鸡蛋1个','虾皮','葱花'],steps:['水开下馄饨5分钟','碗放紫菜虾皮香油','打蛋花','盛馄饨撒葱花']},
+{day:28,emoji:'🥞',name:'蓝莓香蕉松饼',cal:420,carb:48,prot:20,fat:18,fiber:6,main:{name:'香蕉松饼',detail:'香蕉+面粉+鸡蛋'},protein:{name:'鸡蛋+牛奶',detail:'鸡蛋1个'},veg:{name:'蓝莓+枫糖',detail:'蓝莓、枫糖浆'},drink:{name:'温牛奶',detail:'牛奶200ml'},ingredients:['香蕉1根','面粉40g','鸡蛋1个','牛奶250ml','蓝莓','枫糖浆'],steps:['香蕉捣泥+面粉+鸡蛋+50ml牛奶','小火煎小圆饼每面1分钟','叠3片撒蓝莓淋枫糖','小橙子帮忙放蓝莓']},
+{day:29,emoji:'🫓',name:'杂粮煎饼果子',cal:440,carb:44,prot:22,fat:22,fiber:8,main:{name:'杂粮煎饼',detail:'杂粮面糊摊饼'},protein:{name:'鸡蛋+薄脆',detail:'鸡蛋1个'},veg:{name:'生菜+甜面酱',detail:'生菜2片'},drink:{name:'醇香豆浆',detail:'豆浆250ml'},ingredients:['杂粮粉50g','鸡蛋1个','薄脆1片','生菜2片','甜面酱','豆浆250ml'],steps:['杂粮粉加水搅面糊','摊薄饼打蛋摊开','放薄脆刷酱铺生菜','卷起切段方便拿']},
+{day:30,emoji:'🥣',name:'缤纷水果坚果碗',cal:400,carb:50,prot:16,fat:18,fiber:16,main:{name:'奶香燕麦底',detail:'燕麦+牛奶'},protein:{name:'混合坚果+酸奶',detail:'坚果碎+酸奶100g'},veg:{name:'彩虹水果拼盘',detail:'3种水果切块'},drink:{name:'酸奶即饮品',detail:'拌在一起'},ingredients:['燕麦片40g','牛奶150ml','酸奶100g','坚果','水果3种','蜂蜜'],steps:['燕麦+牛奶煮3分钟','铺一层酸奶','摆彩虹色水果和坚果','最后一天仪式感满满']}
 ];
 
-const WEEK_RANGES = [[1,7],[8,14],[15,21],[22,28],[29,30]];
-const WEEKDAYS = ['周日','周一','周二','周三','周四','周五','周六'];
-const COLORS = ['c1','c2','c3','c4','c5','c6','c7'];
-
-let activeTab = '1';
-const today = new Date();
-const dom = today.getDate();
-
-function getStore() { try { return JSON.parse(localStorage.getItem('chengzi_bf')||'{}'); } catch { return {}; } }
-function setStore(d) { localStorage.setItem('chengzi_bf', JSON.stringify(d)); }
-
-function init() {
-  autoTab();
-  renderTabs();
-  renderContent();
-  updateStats();
-  observe();
-}
-
-function autoTab() {
-  const d = Math.min(dom, 30);
-  for (let i = 0; i < WEEK_RANGES.length; i++) {
-    if (d >= WEEK_RANGES[i][0] && d <= WEEK_RANGES[i][1]) { activeTab = String(i+1); break; }
+// ============================================================
+// DATA: FAMILY MEMBERS
+// ============================================================
+const FAMILY = {
+  dad: {
+    id:'dad', emoji:'👨', name:'凯凯爸爸', fullName:'邱凯凯', role:'跨境电商COO',
+    age:34, bio:'PAWZ Road品牌负责人，热爱工作也热爱家庭',
+    tags:['☕ 爱泡茶','🏃 轻运动','🍳 爱做美食','📚 爱看书','🎮 陪娃游戏','🌍 家庭出游'],
+    // 单双休: 2026-03-28(周六)是上班的单休周
+    // 基准: 2026-03-28所在周是单休, 下周双休, 交替
+    singleRestRef: '2026-03-28', // 这一天(周六)要上班
+    workSchedule: {
+      workday: {
+        wake:'06:30', sleep:'22:30',
+        timeline:[
+          {time:'06:30',type:'wake',title:'🌅 起床洗漱',desc:'早起一杯温水，简单洗漱'},
+          {time:'07:00',type:'meal',title:'🍳 准备早餐',desc:'给小橙子和全家准备爱心早餐',meals:['参考早餐计划页']},
+          {time:'07:30',type:'meal',title:'🥣 全家早餐时光',desc:'和小橙子、巧英一起享受早餐',meals:[]},
+          {time:'08:00',type:'work',title:'💼 出门上班',desc:'元气满满出发，路上可以听播客或有声书'},
+          {time:'08:30',type:'work',title:'🏢 到公司·泡一壶茶',desc:'到公司先泡一壶好茶，整理当天任务清单\n今日重点：产品开发 / 阿米巴经营 / 团队管理'},
+          {time:'09:00',type:'work',title:'📊 核心工作时间',desc:'高效处理产品规划、店铺运营、供应链管理等\n建议：番茄工作法，25分钟专注+5分钟休息'},
+          {time:'10:30',type:'meal',title:'🍎 上午茶歇',desc:'',meals:[{t:'水果',c:'苹果1个或坚果一小把',s:'mi-fruit'},{t:'饮品',c:'续一杯茶 / 黑咖啡',s:'mi-drink'}]},
+          {time:'12:00',type:'meal',title:'🍱 午餐时间',desc:'',meals:[{t:'主食',c:'糙米饭/荞麦面/全麦馒头',s:'mi-main'},{t:'荤菜',c:'清蒸鱼/鸡胸肉/虾仁',s:'mi-side'},{t:'素菜',c:'西蓝花/菠菜/时蔬两样',s:'mi-side'},{t:'汤品',c:'番茄蛋花汤/紫菜汤',s:'mi-drink'}]},
+          {time:'12:40',type:'rest',title:'😴 午休',desc:'小睡20-30分钟恢复精力，不宜超过40分钟'},
+          {time:'13:30',type:'work',title:'📋 下午工作',desc:'处理会议、团队沟通、经营分析等\n适合安排需要协作的工作'},
+          {time:'15:30',type:'meal',title:'🫖 下午茶',desc:'',meals:[{t:'零食',c:'全麦饼干/酸奶/小番茄',s:'mi-snack'},{t:'饮品',c:'泡一壶普洱或白茶',s:'mi-drink'}]},
+          {time:'16:00',type:'work',title:'💻 收尾工作',desc:'整理当天成果、规划明天任务'},
+          {time:'17:30',type:'work',title:'🏠 下班回家',desc:'路上可以想想今晚陪小橙子玩什么'},
+          {time:'18:00',type:'meal',title:'🍽️ 晚餐时间',desc:'',meals:[{t:'主食',c:'杂粮米饭/面条',s:'mi-main'},{t:'荤菜',c:'红烧排骨/清炒虾仁/蒸鲈鱼',s:'mi-side'},{t:'素菜',c:'丝瓜/豆角/南瓜 选两样',s:'mi-side'},{t:'汤品',c:'冬瓜排骨汤/玉米鸡汤',s:'mi-drink'},{t:'水果',c:'饭后半小时吃·当季水果',s:'mi-fruit'}]},
+          {time:'18:45',type:'family',title:'👨‍👩‍👧 陪伴小橙子时间',desc:'和小橙子一起玩游戏、讲故事、画画\n或者全家一起散步消食'},
+          {time:'19:30',type:'exercise',title:'🏃 轻运动30分钟',desc:'跑步/快走/跳绳/瑜伽 选一种\n运动后拉伸5分钟'},
+          {time:'20:00',type:'family',title:'🛁 帮小橙子洗澡',desc:'享受亲子时光'},
+          {time:'20:30',type:'read',title:'📖 亲子阅读',desc:'给小橙子读绘本15-20分钟\n小橙子入睡后可以看自己的书'},
+          {time:'21:00',type:'rest',title:'🍵 泡茶独处',desc:'泡一杯安神茶（菊花/薄荷/桂花）\n看书、复盘、放空 — 属于自己的时间'},
+          {time:'22:00',type:'sleep',title:'🌙 准备入睡',desc:'放下手机，保证7-8小时睡眠\n明天又是元气满满的一天'}
+        ]
+      },
+      restday: {
+        wake:'07:30', sleep:'22:30',
+        timeline:[
+          {time:'07:30',type:'wake',title:'🌅 自然醒',desc:'周末不设闹钟，睡到自然醒'},
+          {time:'08:00',type:'meal',title:'🍳 精致早餐时光',desc:'不赶时间，慢慢给全家做一顿丰盛早餐\n可以尝试新花样，拍照分享',meals:['参考早餐计划页']},
+          {time:'08:30',type:'meal',title:'☕ 早餐+泡茶',desc:'全家一起慢慢享受早餐\n给自己泡一壶好茶，享受悠闲的早晨'},
+          {time:'09:30',type:'family',title:'🎮 亲子游戏时间',desc:'和小橙子一起搭积木、画画、做手工\n或者在家玩益智游戏'},
+          {time:'10:30',type:'meal',title:'🍎 上午水果',desc:'',meals:[{t:'水果拼盘',c:'草莓+蓝莓+香蕉+猕猴桃',s:'mi-fruit'}]},
+          {time:'11:00',type:'family',title:'🌳 户外活动',desc:'带小橙子去公园/湿地/湖边\n骑车、放风筝、捡树叶、喂鱼\n享受阳光和大自然'},
+          {time:'12:00',type:'meal',title:'🍱 午餐',desc:'可以在外面吃或回家做一顿特色菜',meals:[{t:'美食分享',c:'尝试做一道新菜给家人',s:'mi-main'},{t:'汤品',c:'炖一锅好汤',s:'mi-drink'}]},
+          {time:'13:00',type:'rest',title:'😴 全家午休',desc:'和小橙子一起午睡，充电1小时'},
+          {time:'14:30',type:'read',title:'📚 阅读时间',desc:'看一本好书，或陪小橙子看绘本\n推荐：管理/人文/育儿类交替看'},
+          {time:'15:30',type:'meal',title:'🫖 下午茶',desc:'',meals:[{t:'自制甜品',c:'和小橙子一起做饼干/蛋糕',s:'mi-snack'},{t:'好茶',c:'泡一壶功夫茶，慢慢品',s:'mi-drink'}]},
+          {time:'16:00',type:'exercise',title:'🏃 运动时间',desc:'跑步40分钟 / 游泳 / 骑行 / 打球\n也可以全家一起运动'},
+          {time:'17:00',type:'family',title:'🛒 逛超市备食材',desc:'带小橙子一起逛菜市场/超市\n让她认识食材，培养生活技能'},
+          {time:'18:00',type:'meal',title:'🍽️ 晚餐 · 美食分享',desc:'全家一起下厨，小橙子当小帮手',meals:[{t:'特色菜',c:'挑战一道新菜 / 做小橙子爱吃的',s:'mi-main'},{t:'蔬菜',c:'尽量五颜六色的蔬菜',s:'mi-side'},{t:'汤品',c:'周末炖汤慢慢煲',s:'mi-drink'},{t:'饭后水果',c:'当季水果拼盘',s:'mi-fruit'}]},
+          {time:'19:00',type:'family',title:'🎬 家庭电影/游戏',desc:'全家一起看一部动画电影\n或者玩桌游、拼拼图'},
+          {time:'20:00',type:'family',title:'🛁 亲子洗澡时间',desc:'和小橙子一起玩水'},
+          {time:'20:30',type:'read',title:'📖 睡前故事',desc:'给小橙子读2-3个绘本故事'},
+          {time:'21:00',type:'rest',title:'🍵 独处泡茶',desc:'小橙子入睡后的属于自己的时间\n泡茶、看书、整理一周所得'},
+          {time:'22:00',type:'sleep',title:'🌙 早点休息',desc:'周末也别熬夜，养精蓄锐'}
+        ]
+      }
+    }
+  },
+  mom: {
+    id:'mom', emoji:'👩', name:'巧英妈妈', fullName:'方巧英', role:'超级妈妈',
+    age:0, bio:'温柔又能干的妈妈',
+    tags:['👩‍🍳 持家能手','💖 照顾全家','🧘 爱瑜伽'],
+    placeholder: true
+  },
+  grandpa_q: {
+    id:'grandpa_q', emoji:'👴', name:'邱爷爷', fullName:'爷爷', role:'爷爷',
+    age:0, bio:'慈祥的爷爷',
+    tags:['🌿 养生','🚶 散步','🎵 听戏'],
+    placeholder: true
+  },
+  grandma_q: {
+    id:'grandma_q', emoji:'👵', name:'邱奶奶', fullName:'奶奶', role:'奶奶',
+    age:0, bio:'和蔼的奶奶',
+    tags:['🥘 拿手好菜','💃 广场舞','🌸 养花'],
+    placeholder: true
+  },
+  grandpa_f: {
+    id:'grandpa_f', emoji:'👴', name:'方外公', fullName:'外公', role:'外公',
+    age:0, bio:'小橙子的外公',
+    tags:['🎣 钓鱼','🌿 养生','📻 听新闻'],
+    placeholder: true
+  },
+  grandma_f: {
+    id:'grandma_f', emoji:'👵', name:'方外婆', fullName:'外婆', role:'外婆',
+    age:0, bio:'小橙子的外婆',
+    tags:['🧶 手工','🥗 养生餐','🌺 种菜'],
+    placeholder: true
+  },
+  baby: {
+    id:'baby', emoji:'👧', name:'小橙子', fullName:'邱聿澄', role:'家里的小太阳',
+    age:3, bio:'可爱的小橙子，全家的宝贝',
+    tags:['🧸 爱玩具','🎨 画画','📖 听故事','🍊 爱吃水果'],
+    placeholder: true
   }
+};
+
+// ============================================================
+// GLOBAL STATE
+// ============================================================
+const WR=[[1,7],[8,14],[15,21],[22,28],[29,30]];
+const WD=['周日','周一','周二','周三','周四','周五','周六'];
+const CC=['c1','c2','c3','c4','c5','c6','c7'];
+let activeBfTab='1';
+let activeMember='dad';
+const today=new Date();
+const dom=today.getDate();
+
+function getS(){try{return JSON.parse(localStorage.getItem('chengzi_bf')||'{}')}catch{return{}}}
+function setS(d){localStorage.setItem('chengzi_bf',JSON.stringify(d))}
+
+// ============================================================
+// PAGE SWITCH
+// ============================================================
+function switchPage(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById(p==='life'?'pageLife':'pageBf').classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(b=>{b.classList.toggle('active',b.dataset.page===p)});
+  if(p==='life') renderLife();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function renderTabs() {
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.week === activeTab);
-    btn.addEventListener('click', () => {
-      activeTab = btn.dataset.week;
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+// ============================================================
+// BREAKFAST PAGE
+// ============================================================
+function initBf(){
+  autoTab();renderTabs();renderBf();updateStats();observe()
+}
+function autoTab(){
+  const d=Math.min(dom,30);
+  for(let i=0;i<WR.length;i++){if(d>=WR[i][0]&&d<=WR[i][1]){activeBfTab=String(i+1);break}}
+}
+function renderTabs(){
+  document.querySelectorAll('#bfTabs .tab-btn').forEach(btn=>{
+    btn.classList.toggle('active',btn.dataset.week===activeBfTab);
+    btn.onclick=()=>{
+      activeBfTab=btn.dataset.week;
+      document.querySelectorAll('#bfTabs .tab-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      renderContent();
-      observe();
-      document.querySelector('.tabs-wrapper').scrollIntoView({behavior:'smooth',block:'start'});
-    });
-  });
+      renderBf();observe();
+      document.getElementById('bfTabs').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  })
+}
+function renderBf(){
+  const ct=document.getElementById('bfContent');
+  const tips=document.getElementById('tipsSection');
+  if(activeBfTab==='reco'){ct.innerHTML=renderReco();tips.style.display='none';return}
+  tips.style.display='';
+  const wi=parseInt(activeBfTab)-1;const[s,e]=WR[wi];const store=getS();
+  let h='';
+  for(let d=s;d<=e;d++){
+    const it=BF[d-1];const dt=new Date(today.getFullYear(),today.getMonth(),d);const wd=WD[dt.getDay()];
+    const isT=d===dom&&dom<=30;const ci=CC[(d-1)%7];const k='day'+d;
+    const chk=store[k]?.checked||false;const rat=store[k]?.rating||'';
+    h+=`<div class="bk-card ${isT?'is-today':''}" data-day="${d}">
+      <div class="card-top"><div class="day-circle ${ci}"><span class="dn">${d}</span><span class="dl">DAY</span></div>
+      <div class="card-title-area"><div class="card-date">${dt.getMonth()+1}月${dt.getDate()}日 · ${wd}</div><div class="card-name"><span class="ce">${it.emoji}</span>${it.name}</div><div class="card-cal">🔥 ${it.cal} kcal</div></div></div>
+      <div class="food-grid">
+        <div class="food-cell"><span class="fc-icon">🍚</span><div class="fc-info"><div class="fc-label">主食</div><div class="fc-name">${it.main.name}</div><div class="fc-detail">${it.main.detail}</div></div></div>
+        <div class="food-cell"><span class="fc-icon">🥩</span><div class="fc-info"><div class="fc-label">蛋白质</div><div class="fc-name">${it.protein.name}</div><div class="fc-detail">${it.protein.detail}</div></div></div>
+        <div class="food-cell"><span class="fc-icon">🥬</span><div class="fc-info"><div class="fc-label">果蔬</div><div class="fc-name">${it.veg.name}</div><div class="fc-detail">${it.veg.detail}</div></div></div>
+        <div class="food-cell"><span class="fc-icon">🥛</span><div class="fc-info"><div class="fc-label">饮品</div><div class="fc-name">${it.drink.name}</div><div class="fc-detail">${it.drink.detail}</div></div></div>
+      </div>
+      <div class="nutri-bar"><div class="nutri-seg carb" style="width:${it.carb}%"></div><div class="nutri-seg prot" style="width:${it.prot}%"></div><div class="nutri-seg fat" style="width:${it.fat}%"></div><div class="nutri-seg fiber" style="width:${it.fiber}%"></div></div>
+      <div class="nutri-labels"><span><i class="nutri-dot carb"></i>碳水${it.carb}%</span><span><i class="nutri-dot prot"></i>蛋白${it.prot}%</span><span><i class="nutri-dot fat"></i>脂肪${it.fat}%</span><span><i class="nutri-dot fiber"></i>纤维${it.fiber}%</span></div>
+      <button class="recipe-toggle" onclick="toggleRecipe(this)">👩‍🍳 做法步骤 <span class="arrow">▼</span></button>
+      <div class="recipe-content">
+        <div class="recipe-ingredients"><div class="ri-title">📋 食材清单</div><div class="ingredient-tags">${it.ingredients.map(i=>`<span class="ing-tag">${i}</span>`).join('')}</div></div>
+        ${it.steps.map((s,i)=>`<div class="recipe-step"><span class="step-num">${i+1}</span><span>${s}</span></div>`).join('')}
+      </div>
+      <div class="rating-section"><div class="rating-left"><button class="check-btn ${chk?'checked':''}" onclick="toggleCheck(${d})"></button><span class="check-label">${chk?'已打卡 ✨':'吃完打卡'}</span></div>
+      <div class="rating-btns"><button class="rate-btn like ${rat==='like'?'selected':''}" onclick="rate(${d},'like')">😋</button><button class="rate-btn ok ${rat==='ok'?'selected':''}" onclick="rate(${d},'ok')">😊</button><button class="rate-btn dislike ${rat==='dislike'?'selected':''}" onclick="rate(${d},'dislike')">😑</button></div></div>
+    </div>`
+  }
+  ct.innerHTML=h
+}
+function toggleRecipe(b){b.classList.toggle('open');b.nextElementSibling.classList.toggle('open')}
+function toggleCheck(d){const s=getS();const k='day'+d;if(!s[k])s[k]={};s[k].checked=!s[k].checked;setS(s);renderBf();updateStats();observe()}
+function rate(d,r){const s=getS();const k='day'+d;if(!s[k])s[k]={};s[k].rating=s[k].rating===r?'':r;setS(s);renderBf();updateStats();observe()}
+function updateStats(){const s=getS();let e=0,l=0,c=0;for(let d=1;d<=30;d++){const k='day'+d;if(s[k]?.checked){e++;c+=BF[d-1].cal}if(s[k]?.rating==='like')l++}
+document.getElementById('statEaten').textContent=e;document.getElementById('statLiked').textContent=l;document.getElementById('statCal').textContent=c}
+
+function renderReco(){
+  const s=getS();let likes=[],oks=[],dislikes=[];
+  for(let d=1;d<=30;d++){const k='day'+d;if(s[k]?.rating==='like')likes.push(d);if(s[k]?.rating==='ok')oks.push(d);if(s[k]?.rating==='dislike')dislikes.push(d)}
+  let h=`<div class="reco-header"><h2>💡 小橙子的口味分析</h2><p>根据打卡和评价智能推荐</p></div>
+  <div class="reco-stats"><div class="reco-stat"><div class="rs-icon">😋</div><div class="rs-num">${likes.length}</div><div class="rs-label">超好吃</div></div><div class="reco-stat"><div class="rs-icon">😊</div><div class="rs-num">${oks.length}</div><div class="rs-label">还不错</div></div><div class="reco-stat"><div class="rs-icon">😑</div><div class="rs-num">${dislikes.length}</div><div class="rs-label">不太爱</div></div></div>
+  <div class="pyramid-wrap"><div class="pyramid-title">🔺 小橙子的营养金字塔</div><div class="pyramid">
+  <div class="pyramid-level py-l1"><span class="pl-icon">🍬</span>油盐糖·少量</div><div class="pyramid-level py-l2"><span class="pl-icon">🥛</span>奶类豆类·每天300ml</div><div class="pyramid-level py-l3"><span class="pl-icon">🥩</span>鱼肉蛋·每天1-2份</div><div class="pyramid-level py-l4"><span class="pl-icon">🥬</span>蔬菜水果·每天3-5份</div><div class="pyramid-level py-l5"><span class="pl-icon">🍚</span>谷薯类·每天主食基础</div>
+  </div></div>`;
+  if(!likes.length&&!oks.length&&!dislikes.length){h+=`<div class="no-data-msg"><div class="nd-emoji">🍊</div><p>还没有评价记录哦~<br>吃完早餐记得帮小橙子打卡和评价！</p></div>`}
+  else{
+    if(likes.length){h+=`<div class="reco-section-title">😋 小橙子最爱</div>`;likes.forEach(d=>{const it=BF[d-1];h+=`<div class="reco-card"><span class="rc-emoji">${it.emoji}</span><div class="rc-info"><div class="rc-name">Day${d} ${it.name}</div><div class="rc-desc">${it.main.name} + ${it.protein.name}</div></div><span class="rc-tag">超爱 🧡</span></div>`})}
+    const lt={};likes.forEach(d=>{aType(BF[d-1]).forEach(t=>{lt[t]=(lt[t]||0)+1})});
+    if(Object.keys(lt).length){
+      h+=`<div class="reco-section-title">📊 口味偏好</div>`;
+      Object.entries(lt).sort((a,b)=>b[1]-a[1]).forEach(([t,c])=>{h+=`<div class="reco-card"><span class="rc-emoji">${tEmoji(t)}</span><div class="rc-info"><div class="rc-name">${t}</div><div class="rc-desc">喜欢了${c}次</div></div></div>`});
+      const ur=[];for(let d=1;d<=30;d++){if(!s['day'+d]?.rating){const it=BF[d-1];const sc=aType(it).reduce((s,t)=>s+(lt[t]||0),0);if(sc>0)ur.push({d,sc,it})}}
+      ur.sort((a,b)=>b.sc-a.sc);
+      if(ur.length){h+=`<div class="reco-section-title">✨ 推荐试试</div>`;ur.slice(0,5).forEach(({d,it})=>{h+=`<div class="reco-card"><span class="rc-emoji">${it.emoji}</span><div class="rc-info"><div class="rc-name">Day${d} ${it.name}</div><div class="rc-desc">${it.main.name}</div></div><span class="rc-tag" style="background:var(--green-light);color:var(--green-deep)">推荐 ⭐</span></div>`})}
+    }
+  }
+  return h
+}
+function aType(it){const ts=[];const n=(it.name+it.main.name).toLowerCase();
+if(n.includes('粥'))ts.push('粥类·暖胃系');if(n.includes('吐司')||n.includes('三明治')||n.includes('帕尼尼')||n.includes('贝果'))ts.push('面包·西式系');if(n.includes('饼')||n.includes('盒子'))ts.push('煎饼·中式系');if(n.includes('饺')||n.includes('馄饨')||n.includes('烧麦'))ts.push('点心·包馅系');if(n.includes('燕麦')||n.includes('坚果'))ts.push('燕麦·轻食系');if(n.includes('松饼')||n.includes('法式'))ts.push('松饼·甜蜜系');if(n.includes('饭团'))ts.push('饭团·日式系');if(n.includes('面'))ts.push('面条·热汤系');if(n.includes('薯')||n.includes('芋')||n.includes('玉米'))ts.push('粗粮·原味系');if(!ts.length)ts.push('综合·创意系');return ts}
+function tEmoji(t){return{'粥类·暖胃系':'🥣','面包·西式系':'🥪','煎饼·中式系':'🥞','点心·包馅系':'🥟','燕麦·轻食系':'🫙','松饼·甜蜜系':'🥞','饭团·日式系':'🍙','面条·热汤系':'🍜','粗粮·原味系':'🍠','综合·创意系':'✨'}[t]||'🍽️'}
+function observe(){document.querySelectorAll('.bk-card:not(.vis)').forEach((c,i)=>{if('IntersectionObserver' in window){const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');o.unobserve(e.target)}})},{threshold:.08});c.style.animationDelay=(i*.07)+'s';o.observe(c)}else c.classList.add('vis')})}
+
+// ============================================================
+// DAILY LIFE PAGE
+// ============================================================
+function renderLife(){
+  renderFamilySelector();
+  renderMemberContent();
 }
 
-function renderContent() {
-  const ct = document.getElementById('mainContent');
-  const tips = document.getElementById('tipsSection');
+function renderFamilySelector(){
+  const sel=document.getElementById('familySelector');
+  sel.innerHTML=Object.values(FAMILY).map(m=>`
+    <div class="family-avatar ${m.id===activeMember?'active':''}" onclick="selectMember('${m.id}')">
+      <span class="fa-emoji">${m.emoji}</span>
+      <span class="fa-name">${m.name}</span>
+      <span class="fa-role">${m.role}</span>
+    </div>
+  `).join('');
+}
 
-  if (activeTab === 'reco') {
-    ct.innerHTML = renderRecommend();
-    tips.style.display = 'none';
+function selectMember(id){
+  activeMember=id;
+  renderFamilySelector();
+  renderMemberContent();
+}
+
+function getDayType(member){
+  const dow=today.getDay(); // 0=Sun
+  if(member.id==='dad'){
+    // 判断单双休
+    const ref=new Date('2026-03-28'); // 这天是单休周的周六(要上班)
+    const refWeekStart=new Date(ref);refWeekStart.setDate(ref.getDate()-ref.getDay()); // 周日
+    const todayWeekStart=new Date(today);todayWeekStart.setDate(today.getDate()-today.getDay());
+    const weekDiff=Math.round((todayWeekStart-refWeekStart)/(7*86400000));
+    const isSingleRestWeek=weekDiff%2===0; // 偶数周=单休周
+
+    if(dow===0) return 'restday'; // 周日都休
+    if(dow===6){
+      return isSingleRestWeek ? 'workday' : 'restday'; // 单休周六上班
+    }
+    return 'workday'; // 周一到周五上班
+  }
+  // 通用: 周末休息
+  if(dow===0||dow===6) return 'restday';
+  return 'workday';
+}
+
+function renderMemberContent(){
+  const m=FAMILY[activeMember];
+  const dayType=getDayType(m);
+  const dow=today.getDay();
+  const dateStr=`${today.getFullYear()}年${today.getMonth()+1}月${today.getDate()}日 ${WD[dow]}`;
+
+  // Day Banner
+  const bannerEl=document.getElementById('dayBanner');
+  const typeMap={workday:{icon:'💼',label:'工作日',tag:'上班',cls:'workday'},restday:{icon:'🌿',label:'休息日',tag:'休息',cls:'restday'},holiday:{icon:'🎉',label:'节假日',tag:'放假',cls:'holiday'}};
+  const dt=typeMap[dayType];
+  let extraInfo='';
+  if(m.id==='dad'){
+    const ref=new Date('2026-03-28');const refWS=new Date(ref);refWS.setDate(ref.getDate()-ref.getDay());
+    const tWS=new Date(today);tWS.setDate(today.getDate()-today.getDay());
+    const wd=Math.round((tWS-refWS)/(7*86400000));
+    extraInfo=wd%2===0?' · 本周单休（周六上班）':' · 本周双休';
+  }
+  bannerEl.innerHTML=`<div class="day-banner-inner ${dt.cls}">
+    <span class="db-icon">${dt.icon}</span>
+    <div class="db-info"><div class="db-date">${dateStr}</div><div class="db-type">${m.name}的${dt.label}${extraInfo}</div></div>
+    <span class="db-tag">${dt.tag}</span>
+  </div>`;
+
+  // Profile Card
+  const profEl=document.getElementById('memberProfile');
+  profEl.innerHTML=`<div class="profile-card">
+    <div class="profile-header">
+      <span class="profile-emoji">${m.emoji}</span>
+      <div><div class="profile-name">${m.fullName}</div><div class="profile-role">${m.bio}</div></div>
+    </div>
+    <div class="profile-tags">${m.tags.map(t=>`<span class="profile-tag">${t}</span>`).join('')}</div>
+  </div>`;
+
+  // Timeline
+  const tlEl=document.getElementById('timeline');
+  if(m.placeholder){
+    tlEl.innerHTML=`<div class="coming-soon">
+      <div class="cs-emoji">🚧</div>
+      <p style="font-size:16px;font-weight:700;margin-bottom:8px">${m.name}的专属页面</p>
+      <p>即将上线，敬请期待~<br>管理员可手动维护信息</p>
+    </div>`;
     return;
   }
 
-  tips.style.display = '';
-  const wi = parseInt(activeTab) - 1;
-  const [s, e] = WEEK_RANGES[wi];
-  const store = getStore();
+  const sched=m.workSchedule[dayType];
+  if(!sched){tlEl.innerHTML='<div class="coming-soon"><p>暂无数据</p></div>';return}
 
-  let html = '';
-  for (let d = s; d <= e; d++) {
-    const item = DATA[d-1];
-    const dt = new Date(today.getFullYear(), today.getMonth(), d);
-    const wd = WEEKDAYS[dt.getDay()];
-    const isToday = d === dom && dom <= 30;
-    const ci = COLORS[(d-1) % 7];
-    const key = 'day' + d;
-    const checked = store[key]?.checked || false;
-    const rating = store[key]?.rating || '';
+  let h='';
+  sched.timeline.forEach((item,i)=>{
+    const [hr,mn]=item.time.split(':');
+    const period=parseInt(hr)<12?'AM':'PM';
+    let descHtml=item.desc.replace(/\n/g,'<br>');
 
-    html += `
-    <div class="bk-card ${isToday?'is-today':''}" data-day="${d}">
-      <div class="card-top">
-        <div class="day-circle ${ci}"><span class="dn">${d}</span><span class="dl">DAY</span></div>
-        <div class="card-title-area">
-          <div class="card-date">${dt.getMonth()+1}月${dt.getDate()}日 · ${wd}</div>
-          <div class="card-name"><span class="ce">${item.emoji}</span>${item.name}</div>
-          <div class="card-cal">🔥 ${item.cal} kcal</div>
-        </div>
-      </div>
-      <div class="food-grid">
-        <div class="food-cell"><span class="fc-icon">🍚</span><div class="fc-info"><div class="fc-label">主食</div><div class="fc-name">${item.main.name}</div><div class="fc-detail">${item.main.detail}</div></div></div>
-        <div class="food-cell"><span class="fc-icon">🥩</span><div class="fc-info"><div class="fc-label">蛋白质</div><div class="fc-name">${item.protein.name}</div><div class="fc-detail">${item.protein.detail}</div></div></div>
-        <div class="food-cell"><span class="fc-icon">🥬</span><div class="fc-info"><div class="fc-label">果蔬</div><div class="fc-name">${item.veg.name}</div><div class="fc-detail">${item.veg.detail}</div></div></div>
-        <div class="food-cell"><span class="fc-icon">🥛</span><div class="fc-info"><div class="fc-label">饮品</div><div class="fc-name">${item.drink.name}</div><div class="fc-detail">${item.drink.detail}</div></div></div>
-      </div>
-      <div class="nutri-bar">
-        <div class="nutri-seg carb" style="width:${item.carb}%"></div>
-        <div class="nutri-seg prot" style="width:${item.prot}%"></div>
-        <div class="nutri-seg fat" style="width:${item.fat}%"></div>
-        <div class="nutri-seg fiber" style="width:${item.fiber}%"></div>
-      </div>
-      <div class="nutri-labels">
-        <span><i class="nutri-dot carb"></i>碳水${item.carb}%</span>
-        <span><i class="nutri-dot prot"></i>蛋白${item.prot}%</span>
-        <span><i class="nutri-dot fat"></i>脂肪${item.fat}%</span>
-        <span><i class="nutri-dot fiber"></i>纤维${item.fiber}%</span>
-      </div>
-      <button class="recipe-toggle" onclick="toggleRecipe(this)">👩‍🍳 做法步骤 <span class="arrow">▼</span></button>
-      <div class="recipe-content">
-        <div class="recipe-ingredients"><div class="ri-title">📋 食材清单</div><div class="ingredient-tags">${item.ingredients.map(i=>`<span class="ing-tag">${i}</span>`).join('')}</div></div>
-        ${item.steps.map((s,i)=>`<div class="recipe-step"><span class="step-num">${i+1}</span><span>${s}</span></div>`).join('')}
-      </div>
-      <div class="rating-section">
-        <div class="rating-left">
-          <button class="check-btn ${checked?'checked':''}" onclick="toggleCheck(${d})"></button>
-          <span class="check-label">${checked?'已打卡 ✨':'吃完打卡'}</span>
-        </div>
-        <div class="rating-btns">
-          <button class="rate-btn like ${rating==='like'?'selected':''}" onclick="rate(${d},'like')">😋</button>
-          <button class="rate-btn ok ${rating==='ok'?'selected':''}" onclick="rate(${d},'ok')">😊</button>
-          <button class="rate-btn dislike ${rating==='dislike'?'selected':''}" onclick="rate(${d},'dislike')">😑</button>
-        </div>
-      </div>
-    </div>`;
-  }
-  ct.innerHTML = html;
-}
-
-function toggleRecipe(btn) {
-  btn.classList.toggle('open');
-  btn.nextElementSibling.classList.toggle('open');
-}
-
-function toggleCheck(day) {
-  const store = getStore();
-  const key = 'day'+day;
-  if (!store[key]) store[key] = {};
-  store[key].checked = !store[key].checked;
-  setStore(store);
-  renderContent(); updateStats(); observe();
-}
-
-function rate(day, r) {
-  const store = getStore();
-  const key = 'day'+day;
-  if (!store[key]) store[key] = {};
-  store[key].rating = store[key].rating === r ? '' : r;
-  setStore(store);
-  renderContent(); updateStats(); observe();
-}
-
-function updateStats() {
-  const store = getStore();
-  let eaten=0, liked=0, cal=0;
-  for (let d=1;d<=30;d++) {
-    const k='day'+d;
-    if (store[k]?.checked) { eaten++; cal+=DATA[d-1].cal; }
-    if (store[k]?.rating==='like') liked++;
-  }
-  document.getElementById('statEaten').textContent = eaten;
-  document.getElementById('statLiked').textContent = liked;
-  document.getElementById('statCal').textContent = cal;
-}
-
-function renderRecommend() {
-  const store = getStore();
-  let likes=[], oks=[], dislikes=[];
-  for (let d=1;d<=30;d++) {
-    const k='day'+d;
-    if (store[k]?.rating==='like') likes.push(d);
-    if (store[k]?.rating==='ok') oks.push(d);
-    if (store[k]?.rating==='dislike') dislikes.push(d);
-  }
-
-  let h = `
-  <div class="reco-header"><h2>💡 小橙子的口味分析</h2><p>根据打卡和评价智能推荐</p></div>
-  <div class="reco-stats">
-    <div class="reco-stat"><div class="rs-icon">😋</div><div class="rs-num">${likes.length}</div><div class="rs-label">超好吃</div></div>
-    <div class="reco-stat"><div class="rs-icon">😊</div><div class="rs-num">${oks.length}</div><div class="rs-label">还不错</div></div>
-    <div class="reco-stat"><div class="rs-icon">😑</div><div class="rs-num">${dislikes.length}</div><div class="rs-label">不太爱</div></div>
-  </div>
-  <div class="pyramid-wrap">
-    <div class="pyramid-title">🔺 小橙子的营养金字塔</div>
-    <div class="pyramid">
-      <div class="pyramid-level py-l1"><span class="pl-icon">🍬</span>油盐糖 · 少量</div>
-      <div class="pyramid-level py-l2"><span class="pl-icon">🥛</span>奶类豆类 · 每天300ml</div>
-      <div class="pyramid-level py-l3"><span class="pl-icon">🥩</span>鱼肉蛋 · 每天1-2份</div>
-      <div class="pyramid-level py-l4"><span class="pl-icon">🥬</span>蔬菜水果 · 每天3-5份</div>
-      <div class="pyramid-level py-l5"><span class="pl-icon">🍚</span>谷薯类 · 每天主食基础</div>
-    </div>
-  </div>`;
-
-  if (!likes.length && !oks.length && !dislikes.length) {
-    h += `<div class="no-data-msg"><div class="nd-emoji">🍊</div><p>还没有评价记录哦~<br>吃完早餐记得帮小橙子打卡和评价！<br>系统会根据口味智能推荐</p></div>`;
-  } else {
-    if (likes.length) {
-      h += `<div class="reco-section-title">😋 小橙子最爱的早餐</div>`;
-      likes.forEach(d => {
-        const it = DATA[d-1];
-        h += `<div class="reco-card"><span class="rc-emoji">${it.emoji}</span><div class="rc-info"><div class="rc-name">Day${d} ${it.name}</div><div class="rc-desc">${it.main.name} + ${it.protein.name}</div></div><span class="rc-tag">超爱 🧡</span></div>`;
-      });
-    }
-
-    const likedTypes = {};
-    likes.forEach(d => {
-      analyzeType(DATA[d-1]).forEach(t => { likedTypes[t]=(likedTypes[t]||0)+1; });
-    });
-
-    if (Object.keys(likedTypes).length) {
-      h += `<div class="reco-section-title">📊 口味偏好分析</div>`;
-      Object.entries(likedTypes).sort((a,b)=>b[1]-a[1]).forEach(([type,count]) => {
-        h += `<div class="reco-card"><span class="rc-emoji">${getTypeEmoji(type)}</span><div class="rc-info"><div class="rc-name">${type}</div><div class="rc-desc">小橙子喜欢了 ${count} 次这类早餐</div></div></div>`;
-      });
-
-      const unrated = [];
-      for (let d=1;d<=30;d++) {
-        if (!store['day'+d]?.rating) {
-          const it = DATA[d-1];
-          const score = analyzeType(it).reduce((s,t)=>s+(likedTypes[t]||0),0);
-          if (score > 0) unrated.push({d,score,it});
-        }
-      }
-      unrated.sort((a,b)=>b.score-a.score);
-      if (unrated.length) {
-        h += `<div class="reco-section-title">✨ 推荐小橙子试试</div>`;
-        unrated.slice(0,5).forEach(({d,it}) => {
-          h += `<div class="reco-card"><span class="rc-emoji">${it.emoji}</span><div class="rc-info"><div class="rc-name">Day${d} ${it.name}</div><div class="rc-desc">${it.main.name} + ${it.protein.name}</div></div><span class="rc-tag" style="background:var(--green-light);color:var(--green-deep)">推荐 ⭐</span></div>`;
+    // Render meals if any
+    if(item.meals&&item.meals.length){
+      if(typeof item.meals[0]==='string'){
+        descHtml+='<br><span class="meal-item mi-main">📋 '+item.meals[0]+'</span>';
+      }else{
+        descHtml+='<div style="margin-top:6px">';
+        item.meals.forEach(ml=>{
+          descHtml+=`<span class="meal-item ${ml.s}">${ml.t}: ${ml.c}</span> `;
         });
+        descHtml+='</div>';
       }
     }
 
-    if (dislikes.length) {
-      h += `<div class="reco-section-title">😑 下次可以换换口味</div>`;
-      dislikes.forEach(d => {
-        const it = DATA[d-1];
-        h += `<div class="reco-card" style="opacity:0.6"><span class="rc-emoji">${it.emoji}</span><div class="rc-info"><div class="rc-name">Day${d} ${it.name}</div><div class="rc-desc">可以用其他类似营养的早餐替换</div></div></div>`;
-      });
-    }
-  }
-  return h;
-}
-
-function analyzeType(item) {
-  const types = [];
-  const n = (item.name+item.main.name).toLowerCase();
-  if (n.includes('粥')||n.includes('小米')||n.includes('南瓜')||n.includes('红豆')) types.push('粥类·暖胃系');
-  if (n.includes('吐司')||n.includes('三明治')||n.includes('帕尼尼')||n.includes('贝果')) types.push('面包·西式系');
-  if (n.includes('饼')||n.includes('煎饼')||n.includes('盒子')) types.push('煎饼·中式系');
-  if (n.includes('饺')||n.includes('馄饨')||n.includes('烧麦')) types.push('点心·包馅系');
-  if (n.includes('燕麦')||n.includes('坚果')) types.push('燕麦·轻食系');
-  if (n.includes('松饼')||n.includes('法式')) types.push('松饼·甜蜜系');
-  if (n.includes('饭团')||n.includes('肉松')) types.push('饭团·日式系');
-  if (n.includes('面')||n.includes('面条')) types.push('面条·热汤系');
-  if (n.includes('薯')||n.includes('芋')||n.includes('玉米')) types.push('粗粮·原味系');
-  if (!types.length) types.push('综合·创意系');
-  return types;
-}
-
-function getTypeEmoji(t) {
-  return {'粥类·暖胃系':'🥣','面包·西式系':'🥪','煎饼·中式系':'🥞','点心·包馅系':'🥟','燕麦·轻食系':'🫙','松饼·甜蜜系':'🥞','饭团·日式系':'🍙','面条·热汤系':'🍜','粗粮·原味系':'🍠','综合·创意系':'✨'}[t]||'🍽️';
-}
-
-function observe() {
-  document.querySelectorAll('.bk-card:not(.vis)').forEach((c,i) => {
-    if ('IntersectionObserver' in window) {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
-      }, {threshold:0.08});
-      c.style.animationDelay = (i*0.07)+'s';
-      obs.observe(c);
-    } else { c.classList.add('vis'); }
+    h+=`<div class="timeline-card tl-${item.type}" style="animation-delay:${i*.06}s">
+      <div class="tl-time"><div class="tl-hour">${item.time}</div><div class="tl-period">${period}</div></div>
+      <div class="tl-line"><div class="tl-dot"></div></div>
+      <div class="tl-body"><div class="tl-title">${item.title}</div><div class="tl-desc">${descHtml}</div></div>
+    </div>`;
   });
+  tlEl.innerHTML=h;
 }
 
-document.addEventListener('DOMContentLoaded', init);
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded',()=>{initBf();renderLife()});
 </script>
 </body>
 </html>
