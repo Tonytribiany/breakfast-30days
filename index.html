@@ -167,6 +167,14 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--warm-b
 .footer .heart{color:var(--orange);animation:heartbeat 1.5s ease-in-out infinite;display:inline-block}
 @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
 
+/* Today Date Bar */
+.today-date-bar{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 18px;background:#fff;border-radius:18px;box-shadow:var(--shadow-card);border:2px solid var(--orange)}
+.tdb-icon{font-size:32px}
+.tdb-info{text-align:left}
+.tdb-date{font-size:16px;font-weight:900;color:var(--text-dark)}
+.tdb-meal{font-size:13px;color:var(--orange-deep);font-weight:600;margin-top:2px}
+.tdb-hint{font-size:11px;color:var(--text-light);margin-top:1px}
+
 /* ========================================= */
 /* ===== DAILY LIFE PAGE ===== */
 /* ========================================= */
@@ -259,12 +267,13 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--warm-b
   <div class="hero-mascot">🍊</div>
   <h1 class="hero-title"><span class="hl">小橙子</span>的<br>爱心健康早餐</h1>
   <p class="hero-sub">邱聿澄小朋友的专属营养美味</p>
-  <div class="hero-family"><span>👨 凯凯爸爸</span><span>👩 巧英妈妈</span><span>👧 小橙子</span></div>
+  <div class="hero-family"><span>👨 爸爸</span><span>👩 妈妈</span><span>👧 小橙子</span></div>
   <div class="hero-badges">
     <span class="badge b1">🍳 精致手作</span><span class="badge b2">🥗 营养均衡</span><span class="badge b3">⚡ 15分钟</span><span class="badge b4">🔄 30天不重样</span>
   </div>
 </div>
 
+<div id="todayDateBar" style="text-align:center;padding:14px 20px 0;max-width:600px;margin:0 auto"></div>
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num" id="statEaten">0</div><div class="stat-label">已打卡</div></div>
   <div class="stat-item"><div class="stat-num" id="statLiked">0</div><div class="stat-label">超好吃</div></div>
@@ -285,7 +294,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--warm-b
 <div class="content" id="bfContent"></div>
 
 <div class="tips-section" id="tipsSection">
-  <div class="tips-title">💝 凯凯爸爸 & 巧英妈妈的小贴士</div>
+  <div class="tips-title">💝 爸爸妈妈的小贴士</div>
   <div class="tip-card"><div class="tip-icon">🥚</div><div class="tip-text"><strong>周末备好半成品</strong><p>卤蛋、酱牛肉、虾仁提前备好冷藏，工作日直接用</p></div></div>
   <div class="tip-card"><div class="tip-icon">🌙</div><div class="tip-text"><strong>隔夜燕麦超省事</strong><p>前一晚泡好燕麦+牛奶，早上加水果坚果就是精致早餐</p></div></div>
   <div class="tip-card"><div class="tip-icon">👧</div><div class="tip-text"><strong>小橙子参与更开心</strong><p>让宝贝帮忙摆水果撒蓝莓，参与感让她吃得更香</p></div></div>
@@ -294,7 +303,7 @@ body{font-family:'Noto Sans SC',-apple-system,sans-serif;background:var(--warm-b
 </div>
 
 <div class="footer">
-  凯凯爸爸和巧英妈妈 用 <span class="heart">🧡</span> 为小橙子准备每一顿早餐<br>
+  爸爸妈妈 用 <span class="heart">🧡</span> 为小橙子准备每一顿早餐<br>
   <span style="font-size:11px;opacity:.5">30天循环 · 爸爸妈妈爱你哟 🍊</span>
 </div>
 
@@ -365,89 +374,67 @@ const BF=[
 // ============================================================
 const FAMILY = {
   dad: {
-    id:'dad', emoji:'👨', name:'凯凯爸爸', fullName:'邱凯凯', role:'跨境电商COO',
+    id:'dad', emoji:'👨', name:'爸爸', fullName:'邱凯凯', role:'跨境电商COO',
     age:34, bio:'PAWZ Road品牌负责人，热爱工作也热爱家庭',
     tags:['☕ 爱泡茶','🏃 轻运动','🍳 爱做美食','📚 爱看书','🎮 陪娃游戏','🌍 家庭出游'],
-    // 单双休: 2026-03-28(周六)是上班的单休周
-    // 基准: 2026-03-28所在周是单休, 下周双休, 交替
-    singleRestRef: '2026-03-28', // 这一天(周六)要上班
+    singleRestRef: '2026-03-28',
     workSchedule: {
       workday: {
-        wake:'06:30', sleep:'22:30',
         timeline:[
-          {time:'06:30',type:'wake',title:'🌅 起床洗漱',desc:'早起一杯温水，简单洗漱'},
-          {time:'07:00',type:'meal',title:'🍳 准备早餐',desc:'给小橙子和全家准备爱心早餐',meals:['参考早餐计划页']},
-          {time:'07:30',type:'meal',title:'🥣 全家早餐时光',desc:'和小橙子、巧英一起享受早餐',meals:[]},
-          {time:'08:00',type:'work',title:'💼 出门上班',desc:'元气满满出发，路上可以听播客或有声书'},
-          {time:'08:30',type:'work',title:'🏢 到公司·泡一壶茶',desc:'到公司先泡一壶好茶，整理当天任务清单\n今日重点：产品开发 / 阿米巴经营 / 团队管理'},
-          {time:'09:00',type:'work',title:'📊 核心工作时间',desc:'高效处理产品规划、店铺运营、供应链管理等\n建议：番茄工作法，25分钟专注+5分钟休息'},
-          {time:'10:30',type:'meal',title:'🍎 上午茶歇',desc:'',meals:[{t:'水果',c:'苹果1个或坚果一小把',s:'mi-fruit'},{t:'饮品',c:'续一杯茶 / 黑咖啡',s:'mi-drink'}]},
-          {time:'12:00',type:'meal',title:'🍱 午餐时间',desc:'',meals:[{t:'主食',c:'糙米饭/荞麦面/全麦馒头',s:'mi-main'},{t:'荤菜',c:'清蒸鱼/鸡胸肉/虾仁',s:'mi-side'},{t:'素菜',c:'西蓝花/菠菜/时蔬两样',s:'mi-side'},{t:'汤品',c:'番茄蛋花汤/紫菜汤',s:'mi-drink'}]},
-          {time:'12:40',type:'rest',title:'😴 午休',desc:'小睡20-30分钟恢复精力，不宜超过40分钟'},
-          {time:'13:30',type:'work',title:'📋 下午工作',desc:'处理会议、团队沟通、经营分析等\n适合安排需要协作的工作'},
-          {time:'15:30',type:'meal',title:'🫖 下午茶',desc:'',meals:[{t:'零食',c:'全麦饼干/酸奶/小番茄',s:'mi-snack'},{t:'饮品',c:'泡一壶普洱或白茶',s:'mi-drink'}]},
-          {time:'16:00',type:'work',title:'💻 收尾工作',desc:'整理当天成果、规划明天任务'},
-          {time:'17:30',type:'work',title:'🏠 下班回家',desc:'路上可以想想今晚陪小橙子玩什么'},
-          {time:'18:00',type:'meal',title:'🍽️ 晚餐时间',desc:'',meals:[{t:'主食',c:'杂粮米饭/面条',s:'mi-main'},{t:'荤菜',c:'红烧排骨/清炒虾仁/蒸鲈鱼',s:'mi-side'},{t:'素菜',c:'丝瓜/豆角/南瓜 选两样',s:'mi-side'},{t:'汤品',c:'冬瓜排骨汤/玉米鸡汤',s:'mi-drink'},{t:'水果',c:'饭后半小时吃·当季水果',s:'mi-fruit'}]},
-          {time:'18:45',type:'family',title:'👨‍👩‍👧 陪伴小橙子时间',desc:'和小橙子一起玩游戏、讲故事、画画\n或者全家一起散步消食'},
-          {time:'19:30',type:'exercise',title:'🏃 轻运动30分钟',desc:'跑步/快走/跳绳/瑜伽 选一种\n运动后拉伸5分钟'},
-          {time:'20:00',type:'family',title:'🛁 帮小橙子洗澡',desc:'享受亲子时光'},
-          {time:'20:30',type:'read',title:'📖 亲子阅读',desc:'给小橙子读绘本15-20分钟\n小橙子入睡后可以看自己的书'},
-          {time:'21:00',type:'rest',title:'🍵 泡茶独处',desc:'泡一杯安神茶（菊花/薄荷/桂花）\n看书、复盘、放空 — 属于自己的时间'},
-          {time:'22:00',type:'sleep',title:'🌙 准备入睡',desc:'放下手机，保证7-8小时睡眠\n明天又是元气满满的一天'}
+          {time:'07:00',type:'meal',title:'🍳 早餐',desc:'给全家准备爱心早餐',meals:[{t:'搭配',c:'参考「早餐计划」页今日推荐',s:'mi-main'}]},
+          {time:'10:30',type:'meal',title:'🍎 上午加餐',desc:'',meals:[{t:'水果',c:'苹果/橙子 1个',s:'mi-fruit'},{t:'饮品',c:'一杯茶或黑咖啡',s:'mi-drink'}]},
+          {time:'12:00',type:'meal',title:'🍱 午餐',desc:'',meals:[{t:'主食',c:'糙米饭/荞麦面/全麦馒头',s:'mi-main'},{t:'荤菜',c:'清蒸鱼/鸡胸肉/虾仁',s:'mi-side'},{t:'素菜',c:'西蓝花/菠菜/时蔬两样',s:'mi-side'},{t:'汤品',c:'番茄蛋花汤/紫菜汤',s:'mi-drink'}]},
+          {time:'15:30',type:'meal',title:'🫖 下午茶',desc:'',meals:[{t:'零食',c:'坚果/酸奶/小番茄',s:'mi-snack'},{t:'好茶',c:'泡一壶普洱或白茶',s:'mi-drink'}]},
+          {time:'18:00',type:'meal',title:'🍽️ 晚餐',desc:'',meals:[{t:'主食',c:'杂粮饭/面条',s:'mi-main'},{t:'荤菜',c:'红烧排骨/清炒虾仁/蒸鲈鱼',s:'mi-side'},{t:'素菜',c:'丝瓜/豆角/南瓜 选两样',s:'mi-side'},{t:'汤品',c:'排骨汤/鸡汤',s:'mi-drink'},{t:'水果',c:'饭后半小时 · 当季水果',s:'mi-fruit'}]},
+          {time:'19:00',type:'family',title:'👨‍👩‍👧 亲子时光',desc:'陪小橙子玩游戏、画画、散步消食'},
+          {time:'19:30',type:'exercise',title:'🏃 运动30分钟',desc:'跑步/快走/跳绳/瑜伽 选一种'},
+          {time:'20:30',type:'read',title:'📖 亲子阅读 + 泡茶',desc:'给小橙子读绘本，入睡后泡茶看书'},
+          {time:'22:00',type:'sleep',title:'🌙 入睡',desc:'保证7-8小时睡眠'}
         ]
       },
       restday: {
-        wake:'07:30', sleep:'22:30',
         timeline:[
-          {time:'07:30',type:'wake',title:'🌅 自然醒',desc:'周末不设闹钟，睡到自然醒'},
-          {time:'08:00',type:'meal',title:'🍳 精致早餐时光',desc:'不赶时间，慢慢给全家做一顿丰盛早餐\n可以尝试新花样，拍照分享',meals:['参考早餐计划页']},
-          {time:'08:30',type:'meal',title:'☕ 早餐+泡茶',desc:'全家一起慢慢享受早餐\n给自己泡一壶好茶，享受悠闲的早晨'},
-          {time:'09:30',type:'family',title:'🎮 亲子游戏时间',desc:'和小橙子一起搭积木、画画、做手工\n或者在家玩益智游戏'},
-          {time:'10:30',type:'meal',title:'🍎 上午水果',desc:'',meals:[{t:'水果拼盘',c:'草莓+蓝莓+香蕉+猕猴桃',s:'mi-fruit'}]},
-          {time:'11:00',type:'family',title:'🌳 户外活动',desc:'带小橙子去公园/湿地/湖边\n骑车、放风筝、捡树叶、喂鱼\n享受阳光和大自然'},
-          {time:'12:00',type:'meal',title:'🍱 午餐',desc:'可以在外面吃或回家做一顿特色菜',meals:[{t:'美食分享',c:'尝试做一道新菜给家人',s:'mi-main'},{t:'汤品',c:'炖一锅好汤',s:'mi-drink'}]},
-          {time:'13:00',type:'rest',title:'😴 全家午休',desc:'和小橙子一起午睡，充电1小时'},
-          {time:'14:30',type:'read',title:'📚 阅读时间',desc:'看一本好书，或陪小橙子看绘本\n推荐：管理/人文/育儿类交替看'},
-          {time:'15:30',type:'meal',title:'🫖 下午茶',desc:'',meals:[{t:'自制甜品',c:'和小橙子一起做饼干/蛋糕',s:'mi-snack'},{t:'好茶',c:'泡一壶功夫茶，慢慢品',s:'mi-drink'}]},
-          {time:'16:00',type:'exercise',title:'🏃 运动时间',desc:'跑步40分钟 / 游泳 / 骑行 / 打球\n也可以全家一起运动'},
-          {time:'17:00',type:'family',title:'🛒 逛超市备食材',desc:'带小橙子一起逛菜市场/超市\n让她认识食材，培养生活技能'},
-          {time:'18:00',type:'meal',title:'🍽️ 晚餐 · 美食分享',desc:'全家一起下厨，小橙子当小帮手',meals:[{t:'特色菜',c:'挑战一道新菜 / 做小橙子爱吃的',s:'mi-main'},{t:'蔬菜',c:'尽量五颜六色的蔬菜',s:'mi-side'},{t:'汤品',c:'周末炖汤慢慢煲',s:'mi-drink'},{t:'饭后水果',c:'当季水果拼盘',s:'mi-fruit'}]},
-          {time:'19:00',type:'family',title:'🎬 家庭电影/游戏',desc:'全家一起看一部动画电影\n或者玩桌游、拼拼图'},
-          {time:'20:00',type:'family',title:'🛁 亲子洗澡时间',desc:'和小橙子一起玩水'},
-          {time:'20:30',type:'read',title:'📖 睡前故事',desc:'给小橙子读2-3个绘本故事'},
-          {time:'21:00',type:'rest',title:'🍵 独处泡茶',desc:'小橙子入睡后的属于自己的时间\n泡茶、看书、整理一周所得'},
-          {time:'22:00',type:'sleep',title:'🌙 早点休息',desc:'周末也别熬夜，养精蓄锐'}
+          {time:'08:00',type:'meal',title:'🍳 精致早餐',desc:'不赶时间，给全家做丰盛早餐',meals:[{t:'搭配',c:'参考「早餐计划」页 · 可以尝试新花样',s:'mi-main'}]},
+          {time:'09:30',type:'family',title:'🎮 亲子游戏',desc:'搭积木、画画、做手工、益智游戏'},
+          {time:'10:30',type:'meal',title:'🍎 水果时间',desc:'',meals:[{t:'水果拼盘',c:'草莓+蓝莓+香蕉+猕猴桃',s:'mi-fruit'}]},
+          {time:'11:00',type:'family',title:'🌳 户外活动',desc:'公园/湿地/湖边 — 骑车、放风筝、喂鱼'},
+          {time:'12:00',type:'meal',title:'🍱 午餐',desc:'',meals:[{t:'特色菜',c:'挑战一道新菜给家人',s:'mi-main'},{t:'汤品',c:'周末炖一锅好汤',s:'mi-drink'}]},
+          {time:'15:00',type:'meal',title:'🫖 下午茶',desc:'',meals:[{t:'甜品',c:'和小橙子一起做饼干/蛋糕',s:'mi-snack'},{t:'好茶',c:'泡一壶功夫茶',s:'mi-drink'}]},
+          {time:'16:00',type:'exercise',title:'🏃 运动',desc:'跑步40分钟/游泳/骑行，也可全家一起'},
+          {time:'18:00',type:'meal',title:'🍽️ 晚餐 · 美食分享',desc:'全家下厨，小橙子当小帮手',meals:[{t:'主菜',c:'做小橙子爱吃的',s:'mi-main'},{t:'蔬菜',c:'五颜六色搭配',s:'mi-side'},{t:'水果',c:'当季水果拼盘',s:'mi-fruit'}]},
+          {time:'19:00',type:'family',title:'🎬 家庭时光',desc:'一起看动画电影、玩桌游、读绘本'},
+          {time:'21:00',type:'rest',title:'🍵 泡茶 + 看书',desc:'小橙子入睡后的独处时间'},
+          {time:'22:00',type:'sleep',title:'🌙 早点休息',desc:'周末也别熬夜'}
         ]
       }
     }
   },
   mom: {
-    id:'mom', emoji:'👩', name:'巧英妈妈', fullName:'方巧英', role:'超级妈妈',
+    id:'mom', emoji:'👩', name:'妈妈', fullName:'方巧英', role:'超级妈妈',
     age:0, bio:'温柔又能干的妈妈',
     tags:['👩‍🍳 持家能手','💖 照顾全家','🧘 爱瑜伽'],
     placeholder: true
   },
   grandpa_q: {
-    id:'grandpa_q', emoji:'👴', name:'邱爷爷', fullName:'爷爷', role:'爷爷',
+    id:'grandpa_q', emoji:'👴', name:'爷爷', fullName:'爷爷', role:'爷爷',
     age:0, bio:'慈祥的爷爷',
     tags:['🌿 养生','🚶 散步','🎵 听戏'],
     placeholder: true
   },
   grandma_q: {
-    id:'grandma_q', emoji:'👵', name:'邱奶奶', fullName:'奶奶', role:'奶奶',
+    id:'grandma_q', emoji:'👵', name:'奶奶', fullName:'奶奶', role:'奶奶',
     age:0, bio:'和蔼的奶奶',
     tags:['🥘 拿手好菜','💃 广场舞','🌸 养花'],
     placeholder: true
   },
   grandpa_f: {
-    id:'grandpa_f', emoji:'👴', name:'方外公', fullName:'外公', role:'外公',
+    id:'grandpa_f', emoji:'👴', name:'外公', fullName:'外公', role:'外公',
     age:0, bio:'小橙子的外公',
     tags:['🎣 钓鱼','🌿 养生','📻 听新闻'],
     placeholder: true
   },
   grandma_f: {
-    id:'grandma_f', emoji:'👵', name:'方外婆', fullName:'外婆', role:'外婆',
+    id:'grandma_f', emoji:'👵', name:'外婆', fullName:'外婆', role:'外婆',
     age:0, bio:'小橙子的外婆',
     tags:['🧶 手工','🥗 养生餐','🌺 种菜'],
     placeholder: true
@@ -489,7 +476,21 @@ function switchPage(p){
 // BREAKFAST PAGE
 // ============================================================
 function initBf(){
-  autoTab();renderTabs();renderBf();updateStats();observe()
+  autoTab();renderTabs();renderBf();updateStats();observe();renderDateBar()
+}
+function renderDateBar(){
+  const el=document.getElementById('todayDateBar');
+  const m=today.getMonth()+1,d=today.getDate(),wd=WD[today.getDay()];
+  const todayIdx=Math.min(d,30)-1;
+  const meal=BF[todayIdx];
+  el.innerHTML=`<div class="today-date-bar">
+    <span class="tdb-icon">${meal.emoji}</span>
+    <div class="tdb-info">
+      <div class="tdb-date">📅 ${m}月${d}日 ${wd}</div>
+      <div class="tdb-meal">今日早餐：${meal.name}</div>
+      <div class="tdb-hint">🔥 ${meal.cal} kcal · ${meal.main.name} + ${meal.protein.name}</div>
+    </div>
+  </div>`;
 }
 function autoTab(){
   const d=Math.min(dom,30);
