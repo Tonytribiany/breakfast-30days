@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>30天元气早餐</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FFF8F0;
+  --warm-white: #FFFDF9;
+  --golden: #E8A838;
+  --golden-light: #FFF3D6;
+  --golden-deep: #C4841D;
+  --terracotta: #C4694A;
+  --terracotta-light: #FDEEE8;
+  --sage: #7BA17D;
+  --sage-light: #E8F3E8;
+  --sage-deep: #5A8A5C;
+  --cocoa: #5C3D2E;
+  --cocoa-light: #8B6F60;
+  --sand: #F5E6D3;
+  --blush: #F9E4DC;
+  --sky: #D4E8F0;
+  --milk: #F0EDE8;
+  --text-primary: #2D1B0E;
+  --text-secondary: #6B5344;
+  --text-muted: #9B8A7B;
+  --card-shadow: 0 2px 16px rgba(92, 61, 46, 0.08), 0 1px 4px rgba(92, 61, 46, 0.04);
+  --card-shadow-hover: 0 8px 32px rgba(92, 61, 46, 0.12), 0 2px 8px rgba(92, 61, 46, 0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === HERO === */
+.hero {
+  position: relative;
+  padding: 60px 24px 40px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(165deg, #FFF3D6 0%, #FDEEE8 40%, #FFF8F0 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(232,168,56,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: -30px;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(123,161,125,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-emoji {
+  font-size: 48px;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 900;
+  font-size: 32px;
+  color: var(--cocoa);
+  margin: 16px 0 8px;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.hero h1 span {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--golden-deep), var(--terracotta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero-tags {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+
+.hero-tag.t1 { background: rgba(232,168,56,0.15); color: var(--golden-deep); }
+.hero-tag.t2 { background: rgba(123,161,125,0.15); color: var(--sage-deep); }
+.hero-tag.t3 { background: rgba(196,105,74,0.15); color: var(--terracotta); }
+.hero-tag.t4 { background: rgba(92,61,46,0.1); color: var(--cocoa-light); }
+
+/* === WEEK TABS === */
+.tabs-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,248,240,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(92,61,46,0.06);
+  padding: 0;
+}
+
+.tabs-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 12px 16px;
+  gap: 8px;
+}
+
+.tabs-scroll::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 24px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  color: var(--text-muted);
+  white-space: nowrap;
+  position: relative;
+}
+
+.tab-btn.active {
+  background: var(--cocoa);
+  color: var(--cream);
+  box-shadow: 0 4px 16px rgba(92,61,46,0.25);
+  transform: scale(1.02);
+}
+
+.tab-btn:not(.active):hover {
+  background: rgba(92,61,46,0.06);
+  color: var(--text-secondary);
+}
+
+/* === DATE INDICATOR === */
+.date-strip {
+  text-align: center;
+  padding: 16px 24px 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.date-strip strong {
+  color: var(--golden-deep);
+  font-weight: 700;
+}
+
+/* === CARDS CONTAINER === */
+.cards-container {
+  padding: 8px 16px 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.week-panel {
+  display: none;
+}
+
+.week-panel.active {
+  display: block;
+  animation: panelIn 0.4s ease-out;
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === BREAKFAST CARD === */
+.breakfast-card {
+  background: var(--warm-white);
+  border-radius: 20px;
+  padding: 0;
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.breakfast-card:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .breakfast-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+}
+
+.breakfast-card.is-today {
+  border: 2px solid var(--golden);
+  box-shadow: 0 4px 24px rgba(232,168,56,0.2), 0 1px 4px rgba(232,168,56,0.1);
+}
+
+.breakfast-card.is-today::before {
+  content: 'TODAY';
+  position: absolute;
+  top: 0; right: 0;
+  background: linear-gradient(135deg, var(--golden), var(--golden-deep));
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 16px 6px 20px;
+  border-radius: 0 18px 0 16px;
+}
+
+.card-header {
+  padding: 20px 20px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.day-badge {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.day-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  border-radius: inherit;
+}
+
+.day-badge .day-num {
+  font-size: 20px;
+  line-height: 1;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.day-badge .day-label {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* Rotating accent colors for day badges */
+.breakfast-card:nth-child(7n+1) .day-badge { background: var(--golden-light); color: var(--golden-deep); }
+.breakfast-card:nth-child(7n+2) .day-badge { background: var(--sage-light); color: var(--sage-deep); }
+.breakfast-card:nth-child(7n+3) .day-badge { background: var(--terracotta-light); color: var(--terracotta); }
+.breakfast-card:nth-child(7n+4) .day-badge { background: var(--sky); color: #4A7A8A; }
+.breakfast-card:nth-child(7n+5) .day-badge { background: var(--blush); color: #B06050; }
+.breakfast-card:nth-child(7n+6) .day-badge { background: #E8E0F0; color: #6A5A7A; }
+.breakfast-card:nth-child(7n+7) .day-badge { background: var(--sand); color: var(--cocoa-light); }
+
+.card-title-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-weekday {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.card-main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cocoa);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === FOOD ITEMS GRID === */
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0 20px 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(92,61,46,0.04);
+}
+
+.food-item {
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.food-item:nth-child(1) { background: rgba(232,168,56,0.06); }
+.food-item:nth-child(2) { background: rgba(196,105,74,0.06); }
+.food-item:nth-child(3) { background: rgba(123,161,125,0.06); }
+.food-item:nth-child(4) { background: rgba(100,160,200,0.06); }
+
+.food-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.food-info {
+  min-width: 0;
+}
+
+.food-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.food-item:nth-child(1) .food-label { color: var(--golden-deep); }
+.food-item:nth-child(2) .food-label { color: var(--terracotta); }
+.food-item:nth-child(3) .food-label { color: var(--sage-deep); }
+.food-item:nth-child(4) .food-label { color: #4A7A8A; }
+
+.food-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+/* === TIPS SECTION === */
+.tips-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 8px 16px 40px;
+}
+
+.tips-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tips-header h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cocoa);
+}
+
+.tips-header p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--warm-white);
+  border-radius: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 8px rgba(92,61,46,0.05);
+}
+
+.tip-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.tip-card:nth-child(1) .tip-icon { background: var(--golden-light); }
+.tip-card:nth-child(2) .tip-icon { background: var(--sage-light); }
+.tip-card:nth-child(3) .tip-icon { background: var(--terracotta-light); }
+.tip-card:nth-child(4) .tip-icon { background: var(--blush); }
+.tip-card:nth-child(5) .tip-icon { background: var(--sky); }
+
+.tip-text {
+  flex: 1;
+}
+
+.tip-text strong {
+  display: block;
+  font-size: 15px;
+  color: var(--cocoa);
+  margin-bottom: 4px;
+}
+
+.tip-text p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(92,61,46,0.06);
+  background: linear-gradient(180deg, transparent, rgba(245,230,211,0.3));
+}
+
+.footer span { opacity: 0.6; }
+
+/* === PROGRESS BAR === */
+.progress-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 4px 20px 0;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(92,61,46,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage), var(--golden));
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === STAGGER ANIMATION === */
+.breakfast-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.breakfast-card.visible {
+  animation: cardReveal 0.5s ease-out forwards;
+}
+
+@keyframes cardReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 768px) {
+  .hero { padding: 80px 40px 48px; }
+  .hero h1 { font-size: 40px; }
+  .cards-container { padding: 16px 24px 40px; }
+  .food-name { font-size: 15px; }
+}
+
+@media (max-width: 374px) {
+  .hero h1 { font-size: 26px; }
+  .food-grid { grid-template-columns: 1fr; }
+  .card-main-title { font-size: 16px; }
+  .tab-btn { padding: 8px 14px; font-size: 13px; }
+}
+
+/* === DARK MODE SUPPORT === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream: #1A1410;
+    --warm-white: #231E18;
+    --text-primary: #F0E8DC;
+    --text-secondary: #B8A898;
+    --text-muted: #786858;
+    --cocoa: #E8D4C4;
+    --cocoa-light: #C4A894;
+    --card-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .hero { background: linear-gradient(165deg, #2A2218 0%, #201814 40%, #1A1410 100%); }
+  .tabs-wrapper { background: rgba(26,20,16,0.92); border-bottom-color: rgba(255,255,255,0.05); }
+  .tab-btn.active { background: var(--golden-deep); }
+  .food-item:nth-child(1) { background: rgba(232,168,56,0.08); }
+  .food-item:nth-child(2) { background: rgba(196,105,74,0.08); }
+  .food-item:nth-child(3) { background: rgba(123,161,125,0.08); }
+  .food-item:nth-child(4) { background: rgba(100,160,200,0.08); }
+  .food-grid { background: rgba(255,255,255,0.03); }
+
+  .breakfast-card:nth-child(7n+1) .day-badge { background: rgba(232,168,56,0.15); }
+  .breakfast-card:nth-child(7n+2) .day-badge { background: rgba(123,161,125,0.15); }
+  .breakfast-card:nth-child(7n+3) .day-badge { background: rgba(196,105,74,0.15); }
+  .breakfast-card:nth-child(7n+4) .day-badge { background: rgba(100,160,200,0.15); }
+  .breakfast-card:nth-child(7n+5) .day-badge { background: rgba(180,100,80,0.15); }
+  .breakfast-card:nth-child(7n+6) .day-badge { background: rgba(120,100,140,0.15); }
+  .breakfast-card:nth-child(7n+7) .day-badge { background: rgba(180,160,130,0.15); }
+}
+
+/* Safari safe area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .footer { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-emoji">🍳</div>
+  <h1><span>30天元气早餐</span></h1>
+  <p class="hero-sub">每日不重样 · 全家营养计划</p>
+  <div class="hero-tags">
+    <span class="hero-tag t1">⏱ 15分钟搞定</span>
+    <span class="hero-tag t2">🥗 营养均衡</span>
+    <span class="hero-tag t3">👶 适合孩子</span>
+    <span class="hero-tag t4">🔄 30天循环</span>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span id="progressText">本月进度</span>
+    <span id="progressNum">0/30</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- WEEK TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs-scroll" id="tabsScroll">
+    <button class="tab-btn active" data-week="1">第一周</button>
+    <button class="tab-btn" data-week="2">第二周</button>
+    <button class="tab-btn" data-week="3">第三周</button>
+    <button class="tab-btn" data-week="4">第四周</button>
+    <button class="tab-btn" data-week="5">第五周</button>
+  </div>
+</div>
+
+<!-- DATE STRIP -->
+<div class="date-strip" id="dateStrip"></div>
+
+<!-- CARDS -->
+<div class="cards-container" id="cardsContainer"></div>
+
+<!-- TIPS -->
+<div class="tips-section">
+  <div class="tips-header">
+    <h2>💡 实操小贴士</h2>
+    <p>让早餐准备更轻松</p>
+  </div>
+  <div class="tip-card">
+    <div class="tip-icon">🥚</div>
+    <div class="tip-text">
+      <strong>周末批量备货</strong>
+      <p>卤蛋、酱牛肉、肉松可以周末集中做好，冰箱冷藏随取随用，工作日零负担</p>
+    </div>
+  </div>
+  <div class="tip-card">
+    <div class="tip-icon">🌙</div>
+    <div class="tip-text">
+      <strong>隔夜燕麦大法</strong>
+      <p>前一晚泡好燕麦，早上加入果蔬和坚果直接吃，完全零烹饪</p>
+    </div>
+  </div>
+  <div class="tip-card">
+    <div class="tip-icon">👶</div>
+    <div class="tip-text">
+      <strong>孩子友好设计</strong>
+      <p>饭团、松饼、卷饼这类手抓食物，小朋友吃得开心又有营养</p>
+    </div>
+  </div>
+  <div class="tip-card">
+    <div class="tip-icon">🧊</div>
+    <div class="tip-text">
+      <strong>冷冻速食库</strong>
+      <p>馄饨、饺子、烧麦批量包好冷冻，早上水开下锅5分钟搞定</p>
+    </div>
+  </div>
+  <div class="tip-card">
+    <div class="tip-icon">🍎</div>
+    <div class="tip-text">
+      <strong>果蔬灵活替换</strong>
+      <p>表里的水果随季节替换即可，核心原则是每天都有一份果或蔬</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>30天元气早餐 · 循环使用不重样 🌅</span>
+</div>
+
+<script>
+// === DATA ===
+const breakfastData = [
+  // Week 1
+  { day: 1, main: '全麦吐司', protein: '煎蛋', vegfruit: '牛油果切片', drink: '鲜牛奶' },
+  { day: 2, main: '小米粥', protein: '水煮蛋', vegfruit: '凉拌黄瓜丝', drink: '鲜橙汁' },
+  { day: 3, main: '杂粮馒头', protein: '酱牛肉片', vegfruit: '圣女果', drink: '豆浆' },
+  { day: 4, main: '三明治', protein: '芝士片', vegfruit: '蓝莓', drink: '酸奶' },
+  { day: 5, main: '燕麦粥', protein: '核桃仁+杏仁', vegfruit: '香蕉', drink: '牛奶' },
+  { day: 6, main: '鸡蛋饼', protein: '鸡蛋', vegfruit: '哈密瓜', drink: '红枣枸杞水' },
+  { day: 7, main: '红薯/紫薯蒸', protein: '茶叶蛋', vegfruit: '苹果', drink: '五谷豆浆' },
+  // Week 2
+  { day: 8, main: '牛肉卷饼', protein: '牛肉丝', vegfruit: '生菜+胡萝卜丝', drink: '鲜牛奶' },
+  { day: 9, main: '南瓜粥', protein: '蒸蛋羹', vegfruit: '猕猴桃', drink: '黑芝麻糊' },
+  { day: 10, main: '法式吐司', protein: '鸡蛋+牛奶', vegfruit: '草莓', drink: '蜂蜜水' },
+  { day: 11, main: '玉米棒', protein: '荷包蛋', vegfruit: '西蓝花焯水', drink: '豆浆' },
+  { day: 12, main: '肉松饭团', protein: '肉松+蛋皮', vegfruit: '小番茄', drink: '酸奶' },
+  { day: 13, main: '山药小米粥', protein: '虾仁', vegfruit: '秋葵焯水', drink: '鲜橙汁' },
+  { day: 14, main: '贝果面包', protein: '三文鱼+奶油芝士', vegfruit: '混合莓果', drink: '牛奶' },
+  // Week 3
+  { day: 15, main: '皮蛋瘦肉粥', protein: '瘦肉+皮蛋', vegfruit: '油条+橙子', drink: '粥即饮品' },
+  { day: 16, main: '全麦帕尼尼', protein: '鸡胸肉片', vegfruit: '生菜+番茄', drink: '酸奶' },
+  { day: 17, main: '紫米糕', protein: '水煮蛋', vegfruit: '火龙果', drink: '牛奶' },
+  { day: 18, main: '韭菜盒子', protein: '鸡蛋+虾皮', vegfruit: '芒果', drink: '豆浆' },
+  { day: 19, main: '隔夜燕麦杯', protein: '希腊酸奶', vegfruit: '奇亚籽+蓝莓', drink: '酸奶即饮品' },
+  { day: 20, main: '糯米烧麦', protein: '猪肉+香菇', vegfruit: '葡萄', drink: '五谷豆浆' },
+  { day: 21, main: '土豆丝饼', protein: '煎蛋', vegfruit: '当季瓜果', drink: '牛奶' },
+  // Week 4
+  { day: 22, main: '番茄鸡蛋面', protein: '鸡蛋+番茄', vegfruit: '菠菜', drink: '面汤即饮品' },
+  { day: 23, main: '芋头蒸糕', protein: '卤蛋', vegfruit: '桃子/李子', drink: '鲜牛奶' },
+  { day: 24, main: '抱蛋煎饺', protein: '肉馅+蛋液', vegfruit: '黄瓜条', drink: '酸奶' },
+  { day: 25, main: '红豆薏米粥', protein: '核桃+腰果', vegfruit: '樱桃', drink: '粥即饮品' },
+  { day: 26, main: '培根芝士吐司', protein: '培根+芝士', vegfruit: '牛油果+番茄', drink: '鲜橙汁' },
+  { day: 27, main: '鲜虾馄饨', protein: '虾仁', vegfruit: '紫菜蛋花', drink: '馄饨汤' },
+  { day: 28, main: '香蕉松饼', protein: '鸡蛋+牛奶', vegfruit: '蓝莓+枫糖', drink: '牛奶' },
+  // Week 5
+  { day: 29, main: '杂粮煎饼果子', protein: '鸡蛋+薄脆', vegfruit: '生菜+甜面酱', drink: '豆浆' },
+  { day: 30, main: '燕麦坚果碗', protein: '混合坚果+酸奶', vegfruit: '当季水果拼盘', drink: '酸奶即饮品' },
+];
+
+const weekDays = ['周日','周一','周二','周三','周四','周五','周六'];
+const foodIcons = { main: '🍚', protein: '🥩', vegfruit: '🥬', drink: '🥛' };
+const foodLabels = { main: '主食', protein: '蛋白质', vegfruit: '果蔬', drink: '饮品' };
+const weekRanges = [[1,7],[8,14],[15,21],[22,28],[29,30]];
+
+// === STATE ===
+let activeWeek = 1;
+const today = new Date();
+const dayOfMonth = today.getDate();
+const monthDays = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+
+// === INIT ===
+function init() {
+  updateProgress();
+  updateDateStrip();
+  autoSelectWeek();
+  renderAllWeeks();
+  setupTabs();
+  observeCards();
+}
+
+function updateProgress() {
+  const pct = Math.min(100, Math.round((dayOfMonth / 30) * 100));
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressNum').textContent = Math.min(dayOfMonth, 30) + '/30';
+}
+
+function updateDateStrip() {
+  const m = today.getMonth() + 1;
+  const d = today.getDate();
+  const wd = weekDays[today.getDay()];
+  document.getElementById('dateStrip').innerHTML =
+    `今天是 <strong>${m}月${d}日 ${wd}</strong>，元气满满的一天从早餐开始`;
+}
+
+function autoSelectWeek() {
+  const d = Math.min(dayOfMonth, 30);
+  for (let i = 0; i < weekRanges.length; i++) {
+    if (d >= weekRanges[i][0] && d <= weekRanges[i][1]) {
+      activeWeek = i + 1;
+      break;
+    }
+  }
+}
+
+function getStartDate(dayNum) {
+  const start = new Date(today.getFullYear(), today.getMonth(), dayNum);
+  return start;
+}
+
+function renderAllWeeks() {
+  const container = document.getElementById('cardsContainer');
+  container.innerHTML = '';
+
+  for (let w = 0; w < weekRanges.length; w++) {
+    const panel = document.createElement('div');
+    panel.className = 'week-panel' + (w + 1 === activeWeek ? ' active' : '');
+    panel.dataset.week = w + 1;
+
+    const [start, end] = weekRanges[w];
+    for (let d = start; d <= end; d++) {
+      const item = breakfastData[d - 1];
+      const dateObj = getStartDate(d);
+      const wd = weekDays[dateObj.getDay()];
+      const isToday = d === dayOfMonth && dayOfMonth <= 30;
+
+      const card = document.createElement('div');
+      card.className = 'breakfast-card' + (isToday ? ' is-today' : '');
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="day-badge">
+            <span class="day-num">${d}</span>
+            <span class="day-label">DAY</span>
+          </div>
+          <div class="card-title-area">
+            <div class="card-weekday">${dateObj.getMonth()+1}月${dateObj.getDate()}日 · ${wd}</div>
+            <div class="card-main-title">${item.main}</div>
+          </div>
+        </div>
+        <div class="food-grid">
+          <div class="food-item">
+            <span class="food-icon">${foodIcons.main}</span>
+            <div class="food-info">
+              <div class="food-label">${foodLabels.main}</div>
+              <div class="food-name">${item.main}</div>
+            </div>
+          </div>
+          <div class="food-item">
+            <span class="food-icon">${foodIcons.protein}</span>
+            <div class="food-info">
+              <div class="food-label">${foodLabels.protein}</div>
+              <div class="food-name">${item.protein}</div>
+            </div>
+          </div>
+          <div class="food-item">
+            <span class="food-icon">${foodIcons.vegfruit}</span>
+            <div class="food-info">
+              <div class="food-label">${foodLabels.vegfruit}</div>
+              <div class="food-name">${item.vegfruit}</div>
+            </div>
+          </div>
+          <div class="food-item">
+            <span class="food-icon">${foodIcons.drink}</span>
+            <div class="food-info">
+              <div class="food-label">${foodLabels.drink}</div>
+              <div class="food-name">${item.drink}</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      panel.appendChild(card);
+    }
+    container.appendChild(panel);
+  }
+}
+
+function setupTabs() {
+  const btns = document.querySelectorAll('.tab-btn');
+  btns.forEach(btn => {
+    if (parseInt(btn.dataset.week) === activeWeek) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+    btn.addEventListener('click', () => {
+      const w = parseInt(btn.dataset.week);
+      if (w === activeWeek) return;
+      activeWeek = w;
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.week-panel').forEach(p => {
+        p.classList.toggle('active', parseInt(p.dataset.week) === w);
+      });
+      observeCards();
+      // Scroll to top of cards
+      document.querySelector('.tabs-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Scroll active tab into view
+  const activeBtn = document.querySelector('.tab-btn.active');
+  if (activeBtn) {
+    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+}
+
+function observeCards() {
+  const cards = document.querySelectorAll('.week-panel.active .breakfast-card');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+    cards.forEach((card, i) => {
+      card.style.animationDelay = (i * 0.08) + 's';
+      observer.observe(card);
+    });
+  } else {
+    cards.forEach(c => c.classList.add('visible'));
+  }
+}
+
+// GO
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
